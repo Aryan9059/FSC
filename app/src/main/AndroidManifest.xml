@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.fizanyatik.sportsclub">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/icon_main"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon_main_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Main"
+        tools:targetApi="31">
+        <activity
+            android:name=".FeedActivity"
+            android:exported="false" />
+
+        <receiver
+            android:name=".Widget.DhoniWidget"
+            android:exported="false"
+            android:label="MS Dhoni">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/dhoni_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.GautamWidget"
+            android:exported="false"
+            android:label="Gautam Gambhir">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/gautam_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.SelinaWidget"
+            android:exported="false"
+            android:label="Selena Gomez">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/selena_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.MIWidget"
+            android:exported="false"
+            android:label="Mumbai Indians">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/mi_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.CSKWidget"
+            android:exported="false"
+            android:label="Chennai Super Kings">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/csk_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.RCBWIdget"
+            android:exported="false"
+            android:label="Royal Challengers Bangalore">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ACTION_AUTO_UPDATE_WIDGET" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/rcb_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.DCWidget"
+            android:exported="false"
+            android:label="Delhi Capitals">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/dc_widget_info" />
+        </receiver>
+
+        <activity
+            android:name=".Design"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.RankingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.TermsAndConditions"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PrivacyPolicy"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ShikharSinha"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PrateekSinha"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AditiSrivastava"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PranjalSingh"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PraveenPushkar"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.SouthernBrave"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AryanSrivastava"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.NorthernSuperchargers"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Splash.Main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

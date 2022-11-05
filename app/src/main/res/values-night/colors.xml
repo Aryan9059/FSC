@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="screen_background">#201A1A</color>
+    <color name="ui_background">#3B2D2E</color>
+    <color name="bar_background">#524344</color>
+    <color name="bar_ui">#FFDADB</color>
+    <color name="button_background">#FFB2B8</color>
+    <color name="main_text">#ECE0DF</color>
+    <color name="secondary_text">#D7C1C2</color>
+    <color name="outline">#655C5C</color>
+
+    <color name="red_light">#442a26</color>
+    <color name="red_dark">#ffdad3</color>
+    <color name="yellow_light">#3b2f15</color>
+    <color name="yellow_dark">#ffde9e</color>
+    <color name="blue_light">#263140</color>
+    <color name="blue_dark">#d2e4ff</color>
+</resources>

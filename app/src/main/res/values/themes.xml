@@ -1,0 +1,244 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+
+    <style name="Theme.Splash.Main" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#FFFBFF</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Blue" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#fdfbfe</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#fdfbfe</item>
+        <item name="android:navigationBarColor">#fdfbfe</item>
+        <item name="screen_background">#fdfbfe</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Yellow" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#FFFBFF</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Pink" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#FFFBFF</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Green" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#fdfdf5</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#fdfdf5</item>
+        <item name="android:navigationBarColor">#fdfdf5</item>
+        <item name="screen_background">#fdfdf5</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Teal" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#fbfdfc</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#fbfdfc</item>
+        <item name="android:navigationBarColor">#fbfdfc</item>
+        <item name="screen_background">#fbfdfc</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Purple" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#FFFBFF</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Red" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#FFFBFF</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Main" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#8F4A51</item>
+        <item name="colorAccent">#8F4A51</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="ui_background">#FFECED</item>
+        <item name="bar_background">#F4DDDE</item>
+        <item name="bar_ui">#765658</item>
+        <item name="navigation">#Ead0d1</item>
+        <item name="button_background">#8F4A51</item>
+        <item name="main_text">#201A1A</item>
+        <item name="secondary_text">#524344</item>
+        <item name="outline">#998E8E</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Main.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Main.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Main.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Blue" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#445e91</item>
+        <item name="colorAccent">#445e91</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#fdfbfe</item>
+        <item name="screen_background">#fdfbfe</item>
+        <item name="ui_background">#f0f0fa</item>
+        <item name="bar_background">#e2e2ec</item>
+        <item name="bar_ui">#565e71</item>
+        <item name="navigation">#d4d8e4</item>
+        <item name="button_background">#445e91</item>
+        <item name="main_text">#1b1a1f</item>
+        <item name="secondary_text">#444750</item>
+        <item name="outline">#919095</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Yellow" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#79590c</item>
+        <item name="colorAccent">#79590c</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#fffbff</item>
+        <item name="screen_background">#fffbff</item>
+        <item name="ui_background">#fcefde</item>
+        <item name="bar_background">#eee1d0</item>
+        <item name="bar_ui">#6b5c3f</item>
+        <item name="navigation">#e4d5be</item>
+        <item name="button_background">#79590c</item>
+        <item name="main_text">#1e1b16</item>
+        <item name="secondary_text">#4e4639</item>
+        <item name="outline">#979088</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Pink" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#8d4956</item>
+        <item name="colorAccent">#8d4956</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#fffbff</item>
+        <item name="screen_background">#fffbff</item>
+        <item name="ui_background">#ffecee</item>
+        <item name="bar_background">#f3dddf</item>
+        <item name="bar_ui">#75565b</item>
+        <item name="navigation">#ead0d3</item>
+        <item name="button_background">#8d4956</item>
+        <item name="main_text">#201a1a</item>
+        <item name="secondary_text">#524444</item>
+        <item name="outline">#988e8f</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Green" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#4a662c</item>
+        <item name="colorAccent">#4a662c</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#fdfdf5</item>
+        <item name="screen_background">#fdfdf5</item>
+        <item name="ui_background">#eff1e3</item>
+        <item name="bar_background">#e1e3d5</item>
+        <item name="bar_ui">#586249</item>
+        <item name="navigation">#d4d8c7</item>
+        <item name="button_background">#4a662c</item>
+        <item name="main_text">#1b1c17</item>
+        <item name="secondary_text">#45483d</item>
+        <item name="outline">#90918b</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Teal" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#006b61</item>
+        <item name="colorAccent">#006b61</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#fbfdfc</item>
+        <item name="screen_background">#fbfdfc</item>
+        <item name="ui_background">#e9f4f0</item>
+        <item name="bar_background">#dae5e1</item>
+        <item name="bar_ui">#4a635f</item>
+        <item name="navigation">#c7dad6</item>
+        <item name="button_background">#006b61</item>
+        <item name="main_text">#1a1c1b</item>
+        <item name="secondary_text">#3f4a46</item>
+        <item name="outline">#8f9190</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Purple" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#68548f</item>
+        <item name="colorAccent">#68548f</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#fffbff</item>
+        <item name="screen_background">#fffbff</item>
+        <item name="ui_background">#f6eefb</item>
+        <item name="bar_background">#e7dfea</item>
+        <item name="bar_ui">#635b70</item>
+        <item name="navigation">#dbd3e2</item>
+        <item name="button_background">#68548f</item>
+        <item name="main_text">#1d1b1e</item>
+        <item name="secondary_text">#48454e</item>
+        <item name="outline">#948f95</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Red" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#904a42</item>
+        <item name="colorAccent">#904a42</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#fffbff</item>
+        <item name="screen_background">#fffbff</item>
+        <item name="ui_background">#ffede9</item>
+        <item name="bar_background">#f5ddd9</item>
+        <item name="bar_ui">#775651</item>
+        <item name="navigation">#ecd0cc</item>
+        <item name="button_background">#904a42</item>
+        <item name="main_text">#201b18</item>
+        <item name="secondary_text">#534441</item>
+        <item name="outline">#998d8d</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Main.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <!-- Radius of the outer bound of widgets to make the rounded corners -->
+        <item name="appWidgetRadius">16dp</item>
+        <!--
+        Radius of the inner view's bound of widgets to make the rounded corners.
+        It needs to be 8dp or less than the value of appWidgetRadius
+        -->
+        <item name="appWidgetInnerRadius">8dp</item>
+    </style>
+
+    <style name="Theme.Main.AppWidgetContainer" parent="Theme.Main.AppWidgetContainerParent">
+        <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
+        <item name="appWidgetPadding">16dp</item>
+    </style>
+
+</resources>

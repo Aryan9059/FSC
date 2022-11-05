@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.FSC.AppWidget.Container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="0dp"
+    android:id="@+id/rcb_parent"
+    android:background="#00ffffff"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/Theme.Main.AppWidgetContainer">
+
+    <ImageView
+        android:id="@+id/photo_cv"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/round_outline"
+        android:backgroundTint="@color/red_light"
+        android:clipToOutline="true"
+        android:padding="32dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rcb_widget" />
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/round_outline"
+        android:backgroundTint="@color/red_light"
+        android:clipToOutline="true"
+        android:layout_toRightOf="@id/photo_cv"
+        android:gravity="center_horizontal">
+
+        <TextClock
+            android:id="@+id/time_ashwin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/caption_ll"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:format12Hour="hh:mm"
+            android:gravity="center"
+            android:text="12:45"
+            android:textColor="@color/red_dark"
+            android:textSize="64sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/caption_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/round_dark"
+            android:backgroundTint="@color/red_dark"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:text="#PlayBold"
+                android:textColor="@color/red_light" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/photo_cv"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/round_outline"
+        android:backgroundTint="@color/red_light"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Royal Challengers Bangalore"
+            android:textColor="@color/red_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="right"
+            android:text="IPL"
+            android:textColor="@color/red_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</RelativeLayout>

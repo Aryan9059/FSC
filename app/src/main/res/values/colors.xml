@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="screen_background">#FFFBFF</color>
+    <color name="ui_background">#FFECED</color>
+    <color name="bar_background">#F4DDDE</color>
+    <color name="bar_ui">#765658</color>
+    <color name="button_background">#8F4A51</color>
+    <color name="main_text">#201A1A</color>
+    <color name="secondary_text">#524344</color>
+    <color name="outline">#998E8E</color>
+
+    <color name="main1">#ECE0DF</color>
+    <color name="main2">#FFB2B8</color>
+    <color name="main3">#655C5C</color>
+
+    <color name="blue1">#e3e2e7</color>
+    <color name="blue2">#adc6ff</color>
+    <color name="blue3">#5e5d62</color>
+
+    <color name="yellow1">#e9e0d9</color>
+    <color name="yellow2">#edc06d</color>
+    <color name="yellow3">#635e58</color>
+
+    <color name="pink1">#ece0e0</color>
+    <color name="pink2">#ffb1be</color>
+    <color name="pink3">#655c5d</color>
+
+    <color name="green1">#e3e3db</color>
+    <color name="green2">#b1d08a</color>
+    <color name="green3">#5e5f59</color>
+
+    <color name="teal1">#e1e3e2</color>
+    <color name="teal2">#83d5c7</color>
+    <color name="teal3">#5d5f5e</color>
+
+    <color name="purple1">#e6e1e7</color>
+    <color name="purple2">#d2bcfd</color>
+    <color name="purple3">#5f5d60</color>
+
+    <color name="red1">#eee0df</color>
+    <color name="red2">#feb4a9</color>
+    <color name="red3">#665c5b</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+
+    <color name="red_light">#ffede9</color>
+    <color name="red_dark">#99473e</color>
+    <color name="yellow_light">#ffefd3</color>
+    <color name="yellow_dark">#7b5800</color>
+    <color name="blue_light">#e9f1ff</color>
+    <color name="blue_dark">#306096</color>
+
+</resources>

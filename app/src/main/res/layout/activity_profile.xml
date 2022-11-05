@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:background="?attr/screen_background"
+    tools:context=".Activity.AryanSrivastava">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="?attr/screen_background"
+        android:hapticFeedbackEnabled="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/ctl_home"
+            style="?attr/collapsingToolbarLayoutLargeStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/bar_background"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarStyle"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:statusBarScrim="?attr/bar_background"
+            app:titleCollapseMode="fade">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_home"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:hapticFeedbackEnabled="true"
+                app:layout_collapseMode="pin"
+                app:title="Profile">
+
+                <ImageView
+                    android:id="@+id/profile_back"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/ic_arrow_back_24dp"
+                    app:tint="?attr/main_text" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:overScrollMode="always"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="14dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_picture"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/default_pic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_picture">
+
+                    <TextView
+                        android:id="@+id/name_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gsm"
+                        android:gravity="center"
+                        android:textColor="?attr/main_text"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/email_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="3dp"
+                        android:textColor="?attr/secondary_text"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="8dp"
+                android:id="@+id/stats_cv_profile"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="?attr/ui_background"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginVertical="16dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="24dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginBottom="16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="8dp"
+                                android:background="@drawable/circle_bg"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_baseline_bar_chart_24"
+                                app:tint="?attr/ui_background" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="center"
+                                android:text="Statistics"
+                                android:textAppearance="?attr/textAppearanceTitleLarge"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:text="Matches"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/match"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="right"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progress1"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginBottom="12dp"
+                            app:indicatorColor="?attr/button_background"
+                            app:trackColor="?attr/screen_background"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:text="Runs"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/runs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="right"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progress2"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginBottom="12dp"
+                            app:indicatorColor="?attr/button_background"
+                            app:trackColor="?attr/screen_background"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:text="Wickets"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/wicket"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="right"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progress3"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginBottom="12dp"
+                            app:indicatorColor="?attr/button_background"
+                            app:trackColor="?attr/screen_background"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:text="Average"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/average"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="right"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progress4"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:indicatorColor="?attr/button_background"
+                            app:trackColor="?attr/screen_background"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="8dp" />
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="40dp"
+                        app:layout_constraintBottom_toTopOf="@id/constraintLayout5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/circle_progress"
+                                android:layout_width="54dp"
+                                android:layout_height="54dp"
+                                app:indicatorColor="?attr/button_background"
+                                app:indicatorSize="50dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:trackColor="?attr/screen_background"
+                                app:trackCornerRadius="3dp"
+                                app:trackThickness="6dp" />
+
+                            <TextView
+                                android:id="@+id/strike"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/gsm"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/circle_progress"
+                                app:layout_constraintEnd_toEndOf="@id/circle_progress"
+                                app:layout_constraintStart_toStartOf="@+id/circle_progress"
+                                app:layout_constraintTop_toTopOf="@+id/circle_progress" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+                                android:text="Strike Rate"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/circle_progress" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/circle_progress1"
+                                android:layout_width="54dp"
+                                android:layout_height="54dp"
+                                app:indicatorColor="?attr/button_background"
+                                app:indicatorSize="50dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:trackColor="?attr/screen_background"
+                                app:trackCornerRadius="3dp"
+                                app:trackThickness="6dp" />
+
+                            <TextView
+                                android:id="@+id/economy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/gsm"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/circle_progress1"
+                                app:layout_constraintEnd_toEndOf="@id/circle_progress1"
+                                app:layout_constraintStart_toStartOf="@+id/circle_progress1"
+                                app:layout_constraintTop_toTopOf="@+id/circle_progress1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+                                android:text="Economy"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/circle_progress1" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:id="@+id/password_cl"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_screen"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="8dp"
+                    android:padding="14dp"
+                    app:tint="?attr/main_text"
+                    android:src="@drawable/ic_baseline_lock_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView1"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gsm"
+                        android:text="Change Password"
+                        android:textColor="?attr/main_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Change password for your FSC Account."
+                        android:textColor="?attr/secondary_text"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:padding="8dp"
+                android:id="@+id/profile_cl"
+                android:background="@drawable/ripple_screen"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="8dp"
+                    android:padding="14dp"
+                    app:tint="?attr/main_text"
+                    android:src="@drawable/ic_baseline_person_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gsm"
+                        android:text="Change Profile Picture"
+                        android:textColor="?attr/main_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Change profile picture on FSC App."
+                        android:textColor="?attr/secondary_text"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:padding="8dp"
+                android:id="@+id/stats_cl"
+                android:background="@drawable/ripple_screen"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageViews"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="8dp"
+                    android:padding="14dp"
+                    app:tint="?attr/main_text"
+                    android:src="@drawable/ic_baseline_bar_chart_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageViews"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gsm"
+                        android:text="Wrong Statistics?"
+                        android:textColor="?attr/main_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Send an email request to change your stats."
+                        android:textColor="?attr/secondary_text"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/signout_cl"
+                android:background="@drawable/ripple_screen"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageViewo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="8dp"
+                    android:padding="14dp"
+                    app:tint="?attr/main_text"
+                    android:src="@drawable/ic_baseline_exit_to_app_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewo"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gsm"
+                        android:text="Sign Out"
+                        android:textColor="?attr/main_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Sign out of this FSC Account."
+                        android:textColor="?attr/secondary_text"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

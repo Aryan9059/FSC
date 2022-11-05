@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/version_egg"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:text="We have started a tradition to associate FSC version releases with a chocolate brand. We will follow the alphabetical order starting with the letter A. This version (v1.0) has been named Aero based on the chocolate bar Nestle Aero."
+        android:textColor="?attr/secondary_text"
+        android:textSize="14sp" />
+
+</LinearLayout>

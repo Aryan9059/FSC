@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:background="?attr/screen_background"
+    tools:context=".Activity.SouthernBrave">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/screen_background"
+        android:hapticFeedbackEnabled="true"
+        >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?attr/collapsingToolbarLayoutLargeStyle"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarStyle"
+            android:layout_width="match_parent"
+            android:id="@+id/ctl_home"
+            android:fitsSystemWindows="true"
+            app:statusBarScrim="?attr/bar_background"
+            app:contentScrim="?attr/bar_background"
+            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleCollapseMode="fade">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:hapticFeedbackEnabled="true"
+                android:id="@+id/toolbar_home"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="SBR" >
+
+                <ImageView
+                    android:id="@+id/sbr_back"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:hapticFeedbackEnabled="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_back_24dp"
+                    app:tint="?attr/main_text"
+                    />
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:paddingHorizontal="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:overScrollMode="always"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/team_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/ui_background"
+                app:cardCornerRadius="28dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="24dp"
+                            android:layout_marginRight="8dp"
+                            app:tint="?attr/ui_background"
+                            android:padding="4dp"
+                            android:background="@drawable/circle_bg"
+                            android:src="@drawable/ic_baseline_people_24"
+                            android:layout_height="24dp" />
+
+                        <TextView
+                            android:id="@+id/description_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Players"
+                            android:gravity="center"
+                            android:fontFamily="@font/gsm"
+                            android:textAppearance="?attr/textAppearanceTitleLarge"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:id="@+id/pranjal"
+                        android:background="@drawable/ripple_ui"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/ic_circle_arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="?attr/button_background" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:id="@+id/pranjal_pic_sb"
+                            android:layout_marginLeft="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:src="@drawable/default_pic"
+                            android:scaleType="centerCrop"/>
+
+                        <TextView
+                            android:id="@+id/textView56"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:fontFamily="@font/gsm"
+                            android:text="Pranjal Singh"
+                            android:textColor="?attr/main_text"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toTopOf="@id/textView9"
+                            app:layout_constraintStart_toEndOf="@+id/pranjal_pic_sb"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:text="Bowler"
+                            android:textColor="?attr/secondary_text"
+                            android:textSize="14sp"
+                            app:layout_constraintHorizontal_bias="0"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                            app:layout_constraintStart_toEndOf="@+id/pranjal_pic_sb"
+                            app:layout_constraintTop_toBottomOf="@+id/textView56" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:id="@+id/pushkar"
+                        android:background="@drawable/ripple_ui"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/ic_circle_arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="?attr/button_background" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:id="@+id/pushkar_pic_sb"
+                            android:layout_marginLeft="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:src="@drawable/default_pic"
+                            android:scaleType="centerCrop"/>
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:fontFamily="@font/gsm"
+                            android:text="Praveen Pushkar"
+                            android:textColor="?attr/main_text"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toTopOf="@id/textView4"
+                            app:layout_constraintStart_toEndOf="@+id/pushkar_pic_sb"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="14sp"
+                            android:layout_height="14sp"
+                            android:background="@drawable/circle_bg"
+                            android:text="C"
+                            android:textSize="10sp"
+                            android:layout_marginLeft="4dp"
+                            android:gravity="center"
+                            android:textColor="?attr/ui_background"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                            app:layout_constraintStart_toEndOf="@+id/textView3"
+                            app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:text="Bowling All-Rounder"
+                            android:textColor="?attr/secondary_text"
+                            android:textSize="14sp"
+                            app:layout_constraintHorizontal_bias="0"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                            app:layout_constraintStart_toEndOf="@+id/pushkar_pic_sb"
+                            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/shikhar"
+                        android:background="@drawable/ripple_ui"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_circle_arrow"
+                            android:layout_marginRight="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="?attr/button_background" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:id="@+id/shikhar_pic_sb"
+                            android:layout_marginLeft="16dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:src="@drawable/default_pic"
+                            android:scaleType="centerCrop"/>
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:fontFamily="@font/gsm"
+                            android:text="Shikhar Sinha"
+                            android:textColor="?attr/main_text"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toTopOf="@id/textView5"
+                            app:layout_constraintStart_toEndOf="@+id/shikhar_pic_sb"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:text="Batter"
+                            android:textColor="?attr/secondary_text"
+                            android:textSize="14sp"
+                            app:layout_constraintHorizontal_bias="0"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                            app:layout_constraintStart_toEndOf="@+id/shikhar_pic_sb"
+                            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/ui_background"
+                app:cardCornerRadius="28dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:layout_marginHorizontal="14dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginBottom="16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="8dp"
+                                android:background="@drawable/circle_bg"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_baseline_bar_chart_24"
+                                app:tint="?attr/ui_background" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="center"
+                                android:text="Statistics"
+                                android:textAppearance="?attr/textAppearanceTitleLarge"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:text="Matches"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="right"
+                                android:id="@+id/match"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progress1"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginBottom="12dp"
+                            app:indicatorColor="?attr/button_background"
+                            app:trackColor="?attr/screen_background"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:text="Runs"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="right"
+                                android:id="@+id/runs"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progress2"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginBottom="12dp"
+                            app:indicatorColor="?attr/button_background"
+                            app:trackColor="?attr/screen_background"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:text="Wickets"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/gsm"
+                                android:gravity="right"
+                                android:id="@+id/wicket"
+                                android:textColor="?attr/main_text"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progress3"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:indicatorColor="?attr/button_background"
+                            app:trackColor="?attr/screen_background"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="8dp" />
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="40dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/circle_progress"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                app:indicatorColor="?attr/button_background"
+                                app:indicatorSize="80dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:trackColor="?attr/screen_background"
+                                app:trackCornerRadius="3dp"
+                                app:trackThickness="6dp" />
+
+                            <TextView
+                                android:id="@+id/wins"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/gsm"
+                                android:textColor="?attr/main_text"
+                                android:textSize="24sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/circle_progress"
+                                app:layout_constraintEnd_toEndOf="@id/circle_progress"
+                                app:layout_constraintStart_toStartOf="@+id/circle_progress"
+                                app:layout_constraintTop_toTopOf="@+id/circle_progress" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Wins"
+                                android:layout_marginTop="3dp"
+                                android:textColor="?attr/secondary_text"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/circle_progress" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
