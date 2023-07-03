@@ -1,4 +1,4 @@
-# FSC
+# FSC [DEPRECATED]
 
 A newer version of the Fizanyatik Sports Club App, the FSC App has an updated UI matched with the new Material Design 3 Language supporting Dynamic colors as well!
 
