@@ -1,7 +1,7 @@
 # FSC App [DEPRECATED]
 
-A newer version of the Fizanyatik Sports Club App, the FSC App has an updated UI matched with the new Material Design 3 Language supporting Dynamic colors as well!
+The Fizanyatik Sports Club App (FSC App) has received a significant upgrade, sporting a modern UI that adheres to the latest Material Design 3 guidelines. This enhanced interface leverages Dynamic Colors to deliver a visually appealing and adaptable user experience.
 
-The language used is Android Java and XML for designing UI elements.
+Developed using Android Java and XML, the app is completely open-source under the MIT License, empowering developers to freely incorporate the entire app or specific fragments into their own projects.
 
-The app is open source with MIT Lisence and you are free to use the app as a whole or fragments of it on your own projects. For commercial uses, just provide a reference to my work in you project.
+Commercial use is permitted as long as proper attribution is given to the original work.
