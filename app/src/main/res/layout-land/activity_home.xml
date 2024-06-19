@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/screen_background"
+    tools:context=".Activity.HomeActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:hapticFeedbackEnabled="true"
+        android:background="?attr/bar_background"
+        android:id="@+id/toolbar_home"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Home" >
+
+        <ImageView
+            android:layout_width="26dp"
+            android:id="@+id/settings_btn"
+            android:contentDescription="Settings"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:tint="?attr/main_text"
+            android:layout_gravity="end"
+            android:layout_marginEnd="18dp"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:layout_width="26dp"
+            android:id="@+id/scoring_btn"
+            android:visibility="gone"
+            android:contentDescription="Profile"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_scorboard_24"
+            app:tint="?attr/main_text"
+            android:layout_gravity="end"
+            android:layout_marginEnd="18dp"
+            tools:ignore="HardcodedText" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:id="@+id/fragment_container_new"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/button_background"
+        android:src="@drawable/baseline_add_24"
+        android:visibility="gone"
+        app:tint="?attr/ui_background"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        android:foregroundTint="?attr/ui_background"/>
+
+    <com.google.android.material.navigationrail.NavigationRailView
+        android:id="@+id/bottom_rail"
+        style="@style/Widget.App.NavigationRail"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_height="match_parent"
+        app:itemIconTint="@drawable/bottom_nav_color"
+        app:itemBackground="?attr/bar_background"
+        android:backgroundTint="?attr/bar_background"
+        app:backgroundTint="?attr/bar_background"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_item"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

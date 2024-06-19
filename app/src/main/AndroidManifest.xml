@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <queries>
+        <package android:name="com.ganapathy.best.cricket.scorer" />
+    </queries>
+
+    <application
+        android:name=".ApplicationClass"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/icon_main"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon_main_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Main"
+        tools:targetApi="33">
+        <activity
+            android:name=".Activity.ViewPDF"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stat_logo_full_trans" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/red_dark" />
+
+        <activity
+            android:name=".Activity.AboutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.FeedActivity"
+            android:exported="false" />
+
+        <receiver
+            android:name=".Widget.DhoniWidget"
+            android:exported="false"
+            android:label="MS Dhoni">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/dhoni_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.GautamWidget"
+            android:exported="false"
+            android:label="Gautam Gambhir">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/gautam_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.MIWidget"
+            android:exported="false"
+            android:label="Mumbai Indians">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/mi_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.CSKWidget"
+            android:exported="false"
+            android:label="Chennai Super Kings">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/csk_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.RCBWIdget"
+            android:exported="false"
+            android:label="Kolkata Knights Riders">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ACTION_AUTO_UPDATE_WIDGET" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/rcb_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widget.DCWidget"
+            android:exported="false"
+            android:label="Delhi Capitals">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/dc_widget_info" />
+        </receiver>
+
+        <activity
+            android:name=".Activity.DesignActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.RankingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.TermsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PrivacyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.TeamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Splash.Main"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".Notification.MyFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_icon"
+                android:resource="@drawable/ic_stat_logo_full_trans" />
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_color"
+                android:resource="@color/red_dark" />
+        </service>
+    </application>
+
+</manifest>

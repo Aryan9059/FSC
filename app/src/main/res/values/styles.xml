@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.App" parent="Theme.Material3.Light.NoActionBar">
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="colorSurface">?attr/bar_background</item>
+        <item name="colorOnSurfaceVariant">?attr/bar_background</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+        <item name="colorPrimary">?attr/bar_background</item>
+        <item name="background">?attr/bar_background</item>
+        <item name="backgroundColor">?attr/bar_background</item>
+    </style>
+
+    <style name="Widget.App.NavigationRail" parent="Widget.Material3.NavigationRailView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.NavigationRail</item>
+        <item name="colorPrimary">?attr/bar_background</item>
+        <item name="background">?attr/bar_background</item>
+        <item name="backgroundColor">?attr/bar_background</item>
+    </style>
+
+    <style name="ThemeOverlay.App.NavigationRail" parent="">
+        <item name="colorSurface">?attr/bar_background</item>
+        <item name="colorOnSurfaceVariant">?attr/bar_ui</item>
+        <item name="itemActiveIndicatorStyle">
+            @style/Widget.Material3.NavigationRailView.ActiveIndicator
+        </item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSurface">?attr/bar_background</item>
+        <item name="colorOnSurfaceVariant">?attr/bar_ui</item>
+        <item name="itemActiveIndicatorStyle">
+            @style/Widget.Material3.BottomNavigationView.ActiveIndicator
+        </item>
+    </style>
+
+    <style name="Widget.Material3.NavigationRailView.ActiveIndicator" parent="">
+        <item name="android:width">@dimen/m3_bottom_nav_item_active_indicator_width</item>
+        <item name="android:height">@dimen/m3_bottom_nav_item_active_indicator_height</item>
+        <item name="shapeAppearance">
+            @style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator
+        </item>
+        <item name="android:color">?attr/bar_ui</item>
+    </style>
+
+    <style name="Widget.Material3.BottomNavigationView.ActiveIndicator" parent="">
+        <item name="android:width">@dimen/m3_bottom_nav_item_active_indicator_width</item>
+        <item name="android:height">@dimen/m3_bottom_nav_item_active_indicator_height</item>
+        <item name="marginHorizontal">@dimen/m3_bottom_nav_item_active_indicator_margin_horizontal
+        </item>
+        <item name="shapeAppearance">
+            @style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator
+        </item>
+        <item name="android:color">?attr/bar_ui</item>
+    </style>
+
+    <style name="FullScreenDialog" parent="Theme.Material3.DayNight.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">?attr/screen_background</item>
+        <item name="actionMenuTextColor">?attr/button_background</item>
+        <item name="android:navigationBarColor">?attr/screen_background</item>
+        <item name="colorAccent">?attr/button_background</item>
+        <item name="colorPrimary">?attr/button_background</item>
+        <item name="colorPrimaryDark">?attr/button_background</item>
+    </style>
+
+    <style name="CollapsingToolbarStyle">
+        <item name="fontFamily">@font/shirt_no_font</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="CollapsingToolbarStyleMini">
+        <item name="fontFamily">@font/shirt_no_font</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Widget.FSC.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.FSC.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="screen_background" format="color" />
+    <attr name="ui_background" format="color" />
+    <attr name="bar_background" format="color" />
+    <attr name="bar_ui" format="color" />
+    <attr name="button_background" format="color" />
+    <attr name="main_text" format="color" />
+    <attr name="secondary_text" format="color" />
+    <attr name="outline" format="color" />
+    <attr name="navigation" format="color" />
+    <declare-styleable name="AppWidgetAttrs">
+        <attr name="appWidgetPadding" format="dimension" />
+        <attr name="appWidgetInnerRadius" format="dimension" />
+        <attr name="appWidgetRadius" format="dimension" />
+    </declare-styleable>
+</resources>

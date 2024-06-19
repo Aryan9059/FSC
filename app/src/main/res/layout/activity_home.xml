@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:background="?attr/screen_background"
+    tools:context=".Activity.HomeActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/screen_background"
+        android:hapticFeedbackEnabled="true"
+        >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?attr/collapsingToolbarLayoutLargeStyle"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarStyle"
+            android:layout_width="match_parent"
+            android:id="@+id/ctl_home"
+            android:fitsSystemWindows="true"
+            app:statusBarScrim="?attr/bar_background"
+            app:contentScrim="?attr/bar_background"
+            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleCollapseMode="fade">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:hapticFeedbackEnabled="true"
+                android:id="@+id/toolbar_home"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="Home" >
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:id="@+id/settings_btn"
+                    android:contentDescription="Settings"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_settings_24"
+                    app:tint="?attr/main_text"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="18dp"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:id="@+id/scoring_btn"
+                    android:visibility="gone"
+                    android:contentDescription="Settings"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_scorboard_24"
+                    app:tint="?attr/main_text"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="18dp"
+                    tools:ignore="HardcodedText" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/fragment_container_new"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/button_background"
+        android:src="@drawable/baseline_add_24"
+        android:visibility="gone"
+        app:tint="?attr/ui_background"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="96dp"
+        android:layout_marginRight="16dp"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        android:foregroundTint="?attr/ui_background"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        style="@style/Widget.App.BottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@drawable/bottom_nav_color"
+        app:itemBackground="?attr/bar_background"
+        android:layout_gravity="bottom"
+        app:backgroundTint="?attr/bar_background"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        app:labelVisibilityMode="labeled"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_item" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

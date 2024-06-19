@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:background="?attr/screen_background"
+    tools:context=".Activity.RankingsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/screen_background"
+        android:hapticFeedbackEnabled="true"
+        >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?attr/collapsingToolbarLayoutLargeStyle"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarStyle"
+            android:layout_width="match_parent"
+            android:id="@+id/ctl_home"
+            android:fitsSystemWindows="true"
+            app:statusBarScrim="?attr/bar_background"
+            app:contentScrim="?attr/bar_background"
+            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleCollapseMode="fade">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:hapticFeedbackEnabled="true"
+                android:id="@+id/toolbar_home"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="Rankings" >
+
+                <ImageView
+                    android:id="@+id/rankings_back"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="12dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_back_24dp"
+                    app:tint="?attr/main_text"
+                    />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:paddingHorizontal="8dp"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:overScrollMode="always"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/team_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/ui_background"
+                app:cardCornerRadius="28dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="24dp"
+                            android:layout_marginRight="8dp"
+                            app:tint="?attr/ui_background"
+                            android:padding="4dp"
+                            android:background="@drawable/circle_bg"
+                            android:src="@drawable/ic_baseline_people_24"
+                            android:layout_height="24dp" />
+
+                        <TextView
+                            android:id="@+id/description_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Teams"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textAppearance="?attr/textAppearanceTitleLarge"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/info_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="0dp"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="28dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:paddingTop="12dp"
+                        android:id="@+id/ns_cl"
+                        android:background="@drawable/ripple_button"
+                        android:paddingBottom="12dp"
+                        android:layout_height="wrap_content">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="16dp"
+                                android:background="@drawable/circle_bg"
+                                android:padding="1dp"
+                                android:backgroundTint="?attr/bar_background"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/rank_number"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:id="@+id/team1_image"/>
+
+                        <TextView
+                            android:id="@+id/rank_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:textStyle="bold"
+                            android:text="1"
+                            android:textColor="?attr/screen_background"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/rank_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:textColor="?attr/screen_background"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toTopOf="@id/rank_points"
+                            app:layout_constraintStart_toEndOf="@+id/team1_image"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/rank_points"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:textColor="?attr/ui_background"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/team1_image"
+                            app:layout_constraintTop_toBottomOf="@+id/rank_name" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:paddingTop="6dp"
+                        android:id="@+id/sb_cl"
+                        android:layout_marginTop="8dp"
+                        android:paddingBottom="6dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/ripple_ui"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="21dp"
+                            android:textStyle="bold"
+                            android:text="2"
+                            android:textColor="?attr/main_text"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/team2_image"
+                                android:background="@drawable/circle_bg"
+                                android:padding="1dp"
+                                android:backgroundTint="?attr/bar_background"
+                                android:layout_marginLeft="16dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textView10"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/team2_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:textColor="?attr/main_text"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toTopOf="@id/team2_points"
+                            app:layout_constraintStart_toEndOf="@+id/team2_image"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/team2_points"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:textColor="?attr/secondary_text"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/team2_image"
+                            app:layout_constraintTop_toBottomOf="@+id/team2_name" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/ui_background"
+                app:cardCornerRadius="28dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="24dp"
+                            android:layout_marginRight="8dp"
+                            app:tint="?attr/ui_background"
+                            android:padding="6dp"
+                            android:background="@drawable/circle_bg"
+                            android:src="@drawable/icons8_bat_32"
+                            android:layout_height="24dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Batters"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textAppearance="?attr/textAppearanceTitleLarge"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/batter_rv"
+                        android:layout_marginVertical="12dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/ui_background"
+                app:cardCornerRadius="28dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="24dp"
+                            android:layout_marginRight="8dp"
+                            app:tint="?attr/ui_background"
+                            android:padding="4dp"
+                            android:background="@drawable/circle_bg"
+                            android:src="@drawable/icons8_cricket_ball_64"
+                            android:layout_height="24dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Bowlers"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textAppearance="?attr/textAppearanceTitleLarge"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bowler_rv"
+                        android:layout_marginVertical="12dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/ui_background"
+                app:cardCornerRadius="28dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="24dp"
+                            android:layout_marginRight="8dp"
+                            app:tint="?attr/ui_background"
+                            android:padding="4dp"
+                            android:background="@drawable/circle_bg"
+                            android:src="@drawable/icons8_bat_ball_66"
+                            android:layout_height="24dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="All-Rounders"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textAppearance="?attr/textAppearanceTitleLarge"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/all_rv"
+                        android:layout_marginVertical="12dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

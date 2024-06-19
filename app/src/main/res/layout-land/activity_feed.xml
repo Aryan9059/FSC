@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.FeedActivity"
+    android:background="?attr/screen_background">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:hapticFeedbackEnabled="true"
+                android:id="@+id/toolbar_feed"
+                android:background="?attr/bar_background"
+                android:layout_height="?attr/actionBarSize">
+
+                <ImageView
+                    android:id="@+id/feed_back"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="12dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_back_24dp"
+                    app:tint="?attr/main_text"
+                    />
+
+                <TextView
+                    android:id="@+id/text_type_feed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/main_text"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="21sp"/>
+
+                <ImageView
+                    android:id="@+id/edit_feed"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="16dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center_vertical|right"
+                    android:src="@drawable/baseline_edit_24"
+                    app:tint="?attr/main_text"
+                    />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout6"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:cardBackgroundColor="?attr/ui_background"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintDimensionRatio="16:9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="?attr/bar_background">
+
+                        <ImageView
+                            android:id="@+id/iamgeonefeed"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/onefeedtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="Title"
+                    android:textColor="?attr/main_text"
+                    android:textSize="18sp"
+                    android:ellipsize="end"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/onefeeddate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayout6" />
+
+                <TextView
+                    android:id="@+id/onefeeddate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="Date"
+                    android:textColor="?attr/secondary_text"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayout6"
+                    app:layout_constraintTop_toBottomOf="@id/onefeedtitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <org.sufficientlysecure.htmltextview.HtmlTextView
+                android:id="@+id/onefeedtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:autoLink="all"
+                android:layout_marginBottom="16dp"
+                android:text="Body"
+                android:textColor="?attr/main_text"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

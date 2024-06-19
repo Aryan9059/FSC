@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/screen_background"
+    tools:context=".Activity.TermsActivity">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:hapticFeedbackEnabled="true"
+                android:id="@+id/toolbar_home"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/bar_background">
+
+                <ImageView
+                    android:id="@+id/terms_back"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="12dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_back_24dp"
+                    app:tint="?attr/main_text"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terms &amp; Conditions"
+                    android:textColor="?attr/main_text"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="21sp"/>
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:paddingHorizontal="8dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:overScrollMode="always"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="?attr/main_text"
+                android:textSize="14sp"
+                android:id="@+id/terms_tv"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

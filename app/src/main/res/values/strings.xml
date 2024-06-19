@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">FSC</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_rankings">RankingsActivity</string>
+
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="default_notification_channel_id">PushNotifications</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+
+    <string-array name="types_feed">
+        <item>News</item>
+        <item>Updates</item>
+        <item>Sports</item>
+    </string-array>
+
+    <string-array name="batter_type">
+        <item>Left Hand</item>
+        <item>Right Hand</item>
+    </string-array>
+
+    <string-array name="bowler_type">
+        <item>Left Arm Fast</item>
+        <item>Left Arm Medium</item>
+        <item>Left Arm Leg Spin</item>
+        <item>Left Arm Off Spin</item>
+        <item>Right Arm Fast</item>
+        <item>Right Arm Medium</item>
+        <item>Right Arm Leg Spin</item>
+        <item>Right Arm Off Spin</item>
+    </string-array>
+
+    <string-array name="teams">
+        <item>Superchargers</item>
+        <item>Brave</item>
+    </string-array>
+
+    <string-array name="team_match">
+        <item>NSC</item>
+        <item>SBR</item>
+    </string-array>
+
+    <string-array name="role">
+        <item>Batter</item>
+        <item>Bowler</item>
+        <item>Batting All-Rounder</item>
+        <item>Bowling All-Rounder</item>
+    </string-array>
+</resources>

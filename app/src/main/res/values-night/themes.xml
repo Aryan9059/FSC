@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Splash.Main" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#201A1A</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#201A1A</item>
+        <item name="windowSplashScreenBackground">#201A1A</item>
+        <item name="android:windowBackground">@drawable/fsc_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fsc_logo</item>
+        <item name="android:navigationBarColor">#201A1A</item>
+        <item name="screen_background">#201A1A</item>
+    </style>
+
+    <style name="Theme.Splash.Blue" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#1b1a1f</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#1b1a1f</item>
+        <item name="windowSplashScreenBackground">#1b1a1f</item>
+        <item name="android:windowBackground">@drawable/fsc_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fsc_logo</item>
+        <item name="android:navigationBarColor">#1b1a1f</item>
+        <item name="screen_background">#1b1a1f</item>
+    </style>
+
+    <style name="Theme.Splash.Yellow" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#1e1b16</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#1e1b16</item>
+        <item name="windowSplashScreenBackground">#1e1b16</item>
+        <item name="android:windowBackground">@drawable/fsc_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fsc_logo</item>
+        <item name="android:navigationBarColor">#1e1b16</item>
+        <item name="screen_background">#1e1b16</item>
+    </style>
+
+    <style name="Theme.Splash.Pink" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#201a1a</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#201a1a</item>
+        <item name="windowSplashScreenBackground">#201A1A</item>
+        <item name="android:windowBackground">@drawable/fsc_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fsc_logo</item>
+        <item name="android:navigationBarColor">#201a1a</item>
+        <item name="screen_background">#201a1a</item>
+    </style>
+
+    <style name="Theme.Splash.Green" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#1b1c17</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="windowSplashScreenBackground">#1b1c17</item>
+        <item name="android:windowBackground">@drawable/fsc_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fsc_logo</item>
+        <item name="android:statusBarColor">#1b1c17</item>
+        <item name="android:navigationBarColor">#1b1c17</item>
+        <item name="screen_background">#1b1c17</item>
+    </style>
+
+    <style name="Theme.Splash.Teal" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#1a1c1b</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="windowSplashScreenBackground">#1a1c1b</item>
+        <item name="android:windowBackground">@drawable/fsc_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fsc_logo</item>
+        <item name="android:statusBarColor">#1a1c1b</item>
+        <item name="android:navigationBarColor">#1a1c1b</item>
+        <item name="screen_background">#1a1c1b</item>
+    </style>
+
+    <style name="Theme.Splash.Purple" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#1d1b1e</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#1d1b1e</item>
+        <item name="windowSplashScreenBackground">#1d1b1e</item>
+        <item name="android:windowBackground">@drawable/fsc_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fsc_logo</item>
+        <item name="android:navigationBarColor">#1d1b1e</item>
+        <item name="screen_background">#1d1b1e</item>
+    </style>
+
+    <style name="Theme.Splash.Red" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">#201b18</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">#201b18</item>
+        <item name="windowSplashScreenBackground">#201b18</item>
+        <item name="android:windowBackground">@drawable/fsc_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/fsc_logo</item>
+        <item name="android:navigationBarColor">#201b18</item>
+        <item name="screen_background">#201b18</item>
+    </style>
+
+    <style name="Theme.Main" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFB2B8</item>
+        <item name="colorAccent">#FFB2B8</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#201A1A</item>
+        <item name="screen_background">#201A1A</item>
+        <item name="ui_background">#3B2D2E</item>
+        <item name="bar_background">#524344</item>
+        <item name="bar_ui">#FFDADB</item>
+        <item name="navigation">#604c4D</item>
+        <item name="button_background">#FFB2B8</item>
+        <item name="main_text">#ECE0DF</item>
+        <item name="secondary_text">#D7C1C2</item>
+        <item name="outline">#655C5C</item>
+    </style>
+
+    <style name="Theme.Blue" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#adc6ff</item>
+        <item name="colorAccent">#adc6ff</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#1b1a1f</item>
+        <item name="screen_background">#1b1a1f</item>
+        <item name="ui_background">#2d3037</item>
+        <item name="bar_background">#444750</item>
+        <item name="bar_ui">#dce2fa</item>
+        <item name="navigation">#4b515d</item>
+        <item name="button_background">#adc6ff</item>
+        <item name="main_text">#e3e2e7</item>
+        <item name="secondary_text">#c4c7d0</item>
+        <item name="outline">#5e5d62</item>
+    </style>
+
+    <style name="Theme.Yellow" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#edc06d</item>
+        <item name="colorAccent">#edc06d</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#1e1b16</item>
+        <item name="screen_background">#1e1b16</item>
+        <item name="ui_background">#363024</item>
+        <item name="bar_background">#4e4639</item>
+        <item name="bar_ui">#f6e0bb</item>
+        <item name="navigation">#5b503e</item>
+        <item name="button_background">#edc06d</item>
+        <item name="main_text">#e9e0d9</item>
+        <item name="secondary_text">#d1c6b4</item>
+        <item name="outline">#635e58</item>
+    </style>
+
+    <style name="Theme.Pink" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#ffb1be</item>
+        <item name="colorAccent">#ffb1be</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#201a1a</item>
+        <item name="screen_background">#201a1a</item>
+        <item name="ui_background">#392d2f</item>
+        <item name="bar_background">#524444</item>
+        <item name="bar_ui">#ffd9de</item>
+        <item name="navigation">#604c4e</item>
+        <item name="button_background">#ffb1be</item>
+        <item name="main_text">#ece0e0</item>
+        <item name="secondary_text">#d6c2c3</item>
+        <item name="outline">#655c5d</item>
+    </style>
+
+    <style name="Theme.Green" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#b1d08a</item>
+        <item name="colorAccent">#b1d08a</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#1b1c17</item>
+        <item name="screen_background">#1b1c17</item>
+        <item name="ui_background">#2f3229</item>
+        <item name="navigation">#4c5343</item>
+        <item name="bar_background">#45483d</item>
+        <item name="bar_ui">#dce7c9</item>
+        <item name="button_background">#b1d08a</item>
+        <item name="main_text">#e3e3db</item>
+        <item name="secondary_text">#c6c8bb</item>
+        <item name="outline">#5e5f59</item>
+    </style>
+
+    <style name="Theme.Teal" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#83d5c7</item>
+        <item name="colorAccent">#83d5c7</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#1a1c1b</item>
+        <item name="screen_background">#1a1c1b</item>
+        <item name="ui_background">#293231</item>
+        <item name="bar_background">#3f4a46</item>
+        <item name="bar_ui">#cbe8e3</item>
+        <item name="navigation">#44554f</item>
+        <item name="button_background">#83d5c7</item>
+        <item name="main_text">#e1e3e2</item>
+        <item name="secondary_text">#bec9c5</item>
+        <item name="outline">#5d5f5e</item>
+    </style>
+
+    <style name="Theme.Purple" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#d2bcfd</item>
+        <item name="colorAccent">#d2bcfd</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#1d1b1e</item>
+        <item name="screen_background">#1d1b1e</item>
+        <item name="ui_background">#322f36</item>
+        <item name="bar_background">#48454e</item>
+        <item name="bar_ui">#e8def7</item>
+        <item name="navigation">#524e5c</item>
+        <item name="button_background">#d2bcfd</item>
+        <item name="main_text">#e6e1e7</item>
+        <item name="secondary_text">#cbc3ce</item>
+        <item name="outline">#5f5d60</item>
+    </style>
+
+    <style name="Theme.Red" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#feb4a9</item>
+        <item name="colorAccent">#feb4a9</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#201b18</item>
+        <item name="screen_background">#201b18</item>
+        <item name="ui_background">#3b2d2c</item>
+        <item name="bar_background">#534441</item>
+        <item name="bar_ui">#ffdad4</item>
+        <item name="navigation">#614e4a</item>
+        <item name="button_background">#feb4a9</item>
+        <item name="main_text">#eee0df</item>
+        <item name="secondary_text">#d7c2bd</item>
+        <item name="outline">#665c5b</item>
+    </style>
+
+</resources>

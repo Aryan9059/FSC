@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="8dp"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/team_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="?attr/ui_background"
+        app:cardCornerRadius="28dp"
+        android:layout_marginBottom="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="24dp"
+            android:layout_marginRight="8dp"
+            app:tint="?attr/ui_background"
+            android:padding="4dp"
+            android:src="@drawable/bottom_feeds"
+            android:id="@+id/type_image"
+            android:background="@drawable/circle_bg"
+            android:layout_height="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="?attr/main_text"
+            android:gravity="center"
+            android:id="@+id/type_tv"
+            android:textStyle="bold"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardElevation="0dp"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardBackgroundColor="?attr/screen_background"
+            app:cardCornerRadius="28dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:id="@+id/feed_image"
+                android:layout_height="match_parent"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/feed_title"
+                android:layout_marginRight="8dp"
+                app:layout_constraintHorizontal_bias="0"
+                android:textColor="?attr/main_text"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <org.sufficientlysecure.htmltextview.HtmlTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/secondary_text"
+                android:textSize="14sp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:id="@+id/feed_des"
+                android:layout_marginTop="2dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/feed_title"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/secondary_text"
+                android:textSize="14sp"
+                android:gravity="right"
+                android:id="@+id/feed_time"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/feed_des"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_click_feed"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="28dp"
+        app:strokeColor="#00ffffff"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#00ffffff"
+        app:rippleColor="?attr/bar_background"
+        app:layout_constraintTop_toTopOf="@id/team_card"
+        app:layout_constraintLeft_toLeftOf="@id/team_card"
+        app:layout_constraintRight_toRightOf="@id/team_card"
+        app:layout_constraintBottom_toBottomOf="@+id/team_card" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

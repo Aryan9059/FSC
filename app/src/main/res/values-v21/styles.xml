@@ -1,0 +1,25 @@
+<resources>
+
+    <style name="Widget.FSC.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:padding">?attr/appWidgetPadding</item>
+        <item name="android:background">@drawable/app_widget_background</item>
+    </style>
+
+    <style name="Widget.FSC.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:padding">?attr/appWidgetPadding</item>
+        <item name="android:background">@drawable/app_widget_inner_view_background</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="FullScreenDialog" parent="Theme.Material3.DayNight.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">?attr/screen_background</item>
+        <item name="actionMenuTextColor">?attr/button_background</item>
+        <item name="android:statusBarColor">#00FFFFFF</item>
+        <item name="android:colorAccent">?attr/button_background</item>
+        <item name="colorAccent">?attr/button_background</item>
+        <item name="colorPrimary">?attr/button_background</item>
+        <item name="colorPrimaryDark">?attr/button_background</item>
+    </style>
+</resources>

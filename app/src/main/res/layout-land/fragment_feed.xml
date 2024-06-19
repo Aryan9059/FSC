@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.FeedFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:overScrollMode="always"
+            android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="44dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        android:id="@+id/website_pill"
+                        app:rippleColor="?attr/ui_background"
+                        app:cardBackgroundColor="?attr/screen_background"
+                        app:strokeColor="?attr/outline"
+                        android:layout_height="44dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginVertical="6dp"
+                                android:layout_marginRight="6dp"
+                                app:tint="?attr/main_text"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/instagram"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="44dp"
+                        app:cardCornerRadius="16dp"
+                        app:rippleColor="?attr/ui_background"
+                        app:cardElevation="0dp"
+                        android:id="@+id/youtube_pill"
+                        android:layout_marginLeft="8dp"
+                        app:cardBackgroundColor="?attr/screen_background"
+                        app:strokeColor="?attr/outline"
+                        android:layout_height="44dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginVertical="6dp"
+                                android:layout_marginRight="6dp"
+                                android:layout_height="match_parent"
+                                app:tint="?attr/main_text"
+                                android:src="@drawable/youtube_icon"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="44dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        android:id="@+id/fizanto_pill"
+                        app:rippleColor="?attr/ui_background"
+                        android:layout_marginLeft="8dp"
+                        app:cardBackgroundColor="?attr/screen_background"
+                        app:strokeColor="?attr/outline"
+                        android:layout_height="44dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginVertical="6dp"
+                                android:layout_marginRight="6dp"
+                                android:layout_height="match_parent"
+                                app:tint="?attr/main_text"
+                                android:src="@drawable/fflogonoback"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginHorizontal="8dp"
+                        app:cardBackgroundColor="?attr/ui_background"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/baseline_search_24"
+                                app:tint="?attr/button_background"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="16dp"/>
+
+                            <EditText
+                                android:id="@+id/search_feed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Search Feeds"
+                                android:paddingTop="12dp"
+                                android:paddingBottom="14dp"
+                                android:paddingHorizontal="16dp"
+                                android:textColorHint="?attr/secondary_text"
+                                android:textColor="?attr/main_text"
+                                android:background="#00ffffff"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/feed_rv"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <xyz.peridy.shimmerlayout.ShimmerLayout
+                android:layout_width="match_parent"
+                android:id="@+id/feed_shimmer"
+                android:layout_marginHorizontal="8dp"
+                app:shimmer_color="?attr/bar_background"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="310dp"
+                        app:cardBackgroundColor="?attr/ui_background"
+                        app:cardCornerRadius="28dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardElevation="0dp"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="310dp"
+                        app:cardBackgroundColor="?attr/ui_background"
+                        app:cardCornerRadius="28dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardElevation="0dp"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="310dp"
+                        app:cardBackgroundColor="?attr/ui_background"
+                        app:cardCornerRadius="28dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardElevation="0dp"/>
+
+                </LinearLayout>
+            </xyz.peridy.shimmerlayout.ShimmerLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

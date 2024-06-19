@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "8838571597",
+    "project_id": "fsc-app-dcb8c",
+    "storage_bucket": "fsc-app-dcb8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8838571597:android:46784d2aefc6a2012ede04",
+        "android_client_info": {
+          "package_name": "com.fizanyatik.sportsclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8838571597-0gr6v5ejhaqo07h0hvqteoc85a539p3o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDNBeblN_VT8LIJ5ILmy_JT7ghFO4mAkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8838571597-0gr6v5ejhaqo07h0hvqteoc85a539p3o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="16dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/thumbnail_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardElevation="0dp"
+            app:strokeColor="?attr/bar_background"
+            app:cardBackgroundColor="?attr/ui_background"
+            app:cardCornerRadius="28dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/easter_egg"
+                android:id="@+id/add_thumbnail"
+                android:layout_height="match_parent"/>
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:text="Now its time for the letter C. This version (v2.0) has been named Chokito based on the chocolate bar manufactured by Nestle in New Zealand."
+        android:textColor="?attr/secondary_text"
+        android:textSize="14sp" />
+
+</LinearLayout>

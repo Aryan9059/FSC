@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Splash.Main" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">@android:color/system_neutral1_10</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_vector</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">
+            @android:color/system_neutral1_10
+        </item>
+        <item name="colorPrimaryDark">@android:color/system_neutral1_10</item>
+        <item name="android:statusBarColor">@android:color/system_neutral1_10</item>
+        <item name="android:navigationBarColor">@android:color/system_neutral1_10</item>
+        <item name="screen_background">@android:color/system_neutral1_10</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Blue" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">#fdfbfe</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_vector</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#fdfbfe</item>
+        <item name="android:statusBarColor">#fdfbfe</item>
+        <item name="android:navigationBarColor">#fdfbfe</item>
+        <item name="screen_background">#fdfbfe</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Yellow" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">#FFFBFF</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_vector</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#FFFBFF</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Pink" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">#FFFBFF</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_vector</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#FFFBFF</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Green" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">#fdfdf5</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_vector</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#fdfdf5</item>
+        <item name="android:statusBarColor">#fdfdf5</item>
+        <item name="android:navigationBarColor">#fdfdf5</item>
+        <item name="screen_background">#fdfdf5</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Teal" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">#fbfdfc</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_vector</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#fbfdfc</item>
+        <item name="android:statusBarColor">#fbfdfc</item>
+        <item name="android:navigationBarColor">#fbfdfc</item>
+        <item name="screen_background">#fbfdfc</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Purple" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">#FFFBFF</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_vector</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#FFFBFF</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Splash.Red" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">#FFFBFF</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_logo_vector</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#FFFBFF</item>
+        <item name="android:statusBarColor">#FFFBFF</item>
+        <item name="android:navigationBarColor">#FFFBFF</item>
+        <item name="screen_background">#FFFBFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Main" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@android:color/system_accent1_600</item>
+        <item name="colorAccent">@android:color/system_accent1_600</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/system_neutral1_10</item>
+        <item name="screen_background">@android:color/system_neutral1_10</item>
+        <item name="ui_background">@android:color/system_neutral2_50</item>
+        <item name="android:autofilledHighlight">@android:color/transparent</item>
+        <item name="bar_background">@android:color/system_neutral2_100</item>
+        <item name="bar_ui">@android:color/system_accent2_600</item>
+        <item name="navigation">@android:color/system_neutral2_100</item>
+        <item name="button_background">@android:color/system_accent1_600</item>
+        <item name="main_text">@android:color/system_neutral1_900</item>
+        <item name="secondary_text">@android:color/system_neutral2_700</item>
+        <item name="outline">@android:color/system_neutral1_400</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <!--
+    Having themes.xml for v31 variant because @android:dimen/system_app_widget_background_radius
+     and @android:dimen/system_app_widget_internal_padding requires API level 31
+    -->
+    <style name="Theme.Main.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="appWidgetRadius">@android:dimen/system_app_widget_background_radius</item>
+        <item name="appWidgetInnerRadius">@android:dimen/system_app_widget_inner_radius</item>
+    </style>
+
+</resources>

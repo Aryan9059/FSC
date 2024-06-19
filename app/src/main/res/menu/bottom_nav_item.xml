@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/bottom_home"
+        android:title="Home"
+        android:icon="@drawable/bottom_home"/>
+
+    <item
+        android:id="@+id/bottom_matches"
+        android:title="Matches"
+        android:icon="@drawable/bottom_matches"/>
+
+    <item
+        android:id="@+id/bottom_feeds"
+        android:title="Feeds"
+        android:icon="@drawable/bottom_feeds"/>
+
+</menu>
