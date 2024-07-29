@@ -32,7 +32,7 @@ The FSC App helps to manage statistics of players, rankings, matches and other i
 - 👨🏻 **View Players' Personal Information & Statistics**
 - 📑 **View & Download Match Scorecards**
 - 🔄 **Enjoy Reading Latest Feeds**
-- 😴 **Choose your Favorite Team & Player**
+- 🌟 **Choose your Favorite Team & Player**
 - 🫂 **Connect with our Player via their Socials**
 - 🔢 **View Rankings of our Club Players**
 - 📕 **Get a Glimpse of our Rulebook**
