@@ -9,6 +9,7 @@ The FSC App helps to manage statistics of players, rankings, matches and other i
 <br/>
 
 <a href="https://www.youtube.com/@fizanyatiksc"><img src="https://img.shields.io/youtube/channel/views/UCljG6xDx_rvrC4ZCWp38gcA?style=for-the-badge&logo=youtube" /></a>
+<a href="https://www.instagram.com/fizanyatiksc/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" /></a>
 
 
 <img src="https://img.shields.io/github/v/tag/Aryan9059/FSC?style=for-the-badge&label=Version&labelColor=3B2D2E&color=FFB2B8"/>
