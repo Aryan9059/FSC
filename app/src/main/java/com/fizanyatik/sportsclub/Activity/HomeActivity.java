@@ -22,12 +22,9 @@ import android.util.TypedValue;
 import android.view.HapticFeedbackConstants;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.fizanyatik.sportsclub.Adapter.ViewPagerAdapter;
-import com.fizanyatik.sportsclub.BuildConfig;
 import com.fizanyatik.sportsclub.Dialog.AddFeedDialog;
 import com.fizanyatik.sportsclub.Dialog.AddMatchDialog;
 import com.fizanyatik.sportsclub.Fragment.FeedFragment;
@@ -36,7 +33,6 @@ import com.fizanyatik.sportsclub.Fragment.MatchFragment;
 import com.fizanyatik.sportsclub.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -302,12 +298,21 @@ public class HomeActivity extends AppCompatActivity {
         email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         username = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        String versionName;
+        try{
+            versionName = getPackageManager()
+                    .getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            versionName = "2.0_Chokito";
+        }
+
+        String finalVersionName = versionName;
         FirebaseDatabase.getInstance().getReference("Profile").child(username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.child("version").getValue().toString().equals(BuildConfig.VERSION_NAME)){
+                if (!snapshot.child("version").getValue().toString().equals(finalVersionName)) {
                     reference = FirebaseDatabase.getInstance().getReference("Profile").child(username);                        HashMap<String, Object> map = new HashMap<>();
-                    map.put("version", BuildConfig.VERSION_NAME);
+                    map.put("version", finalVersionName);
                     reference.updateChildren(map);
                 }
             }
@@ -320,7 +325,7 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("Update").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.child("version").getValue().toString().equals(BuildConfig.VERSION_NAME)){
+                if (!snapshot.child("version").getValue().toString().equals(finalVersionName)){
                     MaterialAlertDialogBuilder alertDialog1 = new MaterialAlertDialogBuilder(HomeActivity.this);
                     alertDialog1.setTitle("Update");
                     alertDialog1.setMessage("A new version of FSC App is available to download.");

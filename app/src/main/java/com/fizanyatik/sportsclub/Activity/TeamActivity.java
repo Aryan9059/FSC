@@ -27,7 +27,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.xiaofeng.flowlayoutmanager.FlowLayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,9 +104,6 @@ public class TeamActivity extends AppCompatActivity {
 
         support_rv = findViewById(R.id.supporter_rv);
         support_count = findViewById(R.id.support_count);
-        FlowLayoutManager flowLayoutManager = new FlowLayoutManager();
-        flowLayoutManager.setAutoMeasureEnabled(true);
-        support_rv.setLayoutManager(flowLayoutManager);
         support_rv.setNestedScrollingEnabled(false);
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){

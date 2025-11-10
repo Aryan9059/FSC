@@ -27,10 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import xyz.peridy.shimmerlayout.ShimmerLayout;
 
 public class FeedFragment extends Fragment {
-    ShimmerLayout shimmer2;
     FeedList feedTextList;
     EditText search_feed;
     RecyclerView feed_text_recyclerview;
@@ -43,7 +41,6 @@ public class FeedFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_feed, container, false);
 
-        shimmer2 = root.findViewById(R.id.feed_shimmer);
         feed_text_recyclerview = root.findViewById(R.id.feed_rv);
         search_feed = root.findViewById(R.id.search_feed);
 
@@ -105,7 +102,6 @@ public class FeedFragment extends Fragment {
                 Collections.reverse(feeditems);
                 feed_textAdapter = new FeedAdapter(feeditems, getContext());
                 feed_text_recyclerview.setAdapter(feed_textAdapter);
-                shimmer2.setVisibility(View.GONE);
                 feed_text_recyclerview.setVisibility(View.VISIBLE);
                 feed_textAdapter.notifyDataSetChanged();
 
@@ -117,7 +113,7 @@ public class FeedFragment extends Fragment {
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        if (search_feed.getText().toString().equals("")){
+                        if (search_feed.getText().toString().isEmpty()){
                             feeditems_1.clear();
                             feed_textAdapter = new FeedAdapter(feeditems, getContext());
                             feed_text_recyclerview.setAdapter(feed_textAdapter);

@@ -5,7 +5,6 @@ import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,8 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import com.fizanyatik.sportsclub.List.MatchPlayerList;
 import com.fizanyatik.sportsclub.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,17 +28,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AddMatchDialog extends DialogFragment {
-    ImageView match_back;
-    String batter1_str, batter2_str, batter1_score_final_str, batter2_score_final_str, batter1_parent_str, batter2_parent_str;
-    String bowler1_str, bowler2_str, bowler1_score_final_str, bowler2_score_final_str, bowler1_parent_str, bowler2_parent_str;
-    Button add_match_btn;
-    MatchPlayerList matchPlayerList;
-    List<MatchPlayerList> matchPlayerItems;
-    ArrayList<String> players, players2, players3, players4;
-    DatabaseReference reference;
-    MaterialSwitch out_batter1, out_batter2;
-    MaterialAutoCompleteTextView team1, team2, batter1, batter2, bowler1, bowler2;
-    TextInputEditText score_team1, score_team2, overs_team1, overs_team2, score_batter1, score_batter2, balls_batter1,
+    private ImageView match_back;
+    private Button add_match_btn;
+    private List<MatchPlayerList> matchPlayerItems;
+    private ArrayList<String> players, players2, players3, players4;
+    private MaterialSwitch out_batter1, out_batter2;
+    private MaterialAutoCompleteTextView team1, team2, batter1, batter2, bowler1, bowler2;
+    private TextInputEditText score_team1, score_team2, overs_team1, overs_team2, score_batter1, score_batter2, balls_batter1,
             balls_batter2, wickets_bowler1, wickets_bowler2, runs_bowler1, runs_bowler2, overs_bowler1, overs_bowler2,
             match_details, match_result;
 
@@ -59,26 +52,30 @@ public class AddMatchDialog extends DialogFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        initViews(view);
+        setupTeamAdapters();
+        setupListeners();
+    }
+
+    private void initViews(View view) {
         players = new ArrayList<>();
         players2 = new ArrayList<>();
         players3 = new ArrayList<>();
         players4 = new ArrayList<>();
+        matchPlayerItems = new ArrayList<>();
+
         match_details = view.findViewById(R.id.match_details);
         match_result = view.findViewById(R.id.match_result);
-
         match_back = view.findViewById(R.id.add_match_back);
         add_match_btn = view.findViewById(R.id.add_match_upload);
-
         out_batter1 = view.findViewById(R.id.out_switch_batter1);
         out_batter2 = view.findViewById(R.id.out_switch_batter2);
-
         team1 = view.findViewById(R.id.team1);
         team2 = view.findViewById(R.id.team2);
         batter1 = view.findViewById(R.id.batter1);
         batter2 = view.findViewById(R.id.batter2);
         bowler1 = view.findViewById(R.id.bowler1);
         bowler2 = view.findViewById(R.id.bowler2);
-
         score_team1 = view.findViewById(R.id.score_team1);
         score_team2 = view.findViewById(R.id.score_team2);
         overs_team1 = view.findViewById(R.id.overs_team1);
@@ -93,358 +90,154 @@ public class AddMatchDialog extends DialogFragment {
         runs_bowler2 = view.findViewById(R.id.runs_bowler2);
         overs_bowler1 = view.findViewById(R.id.overs_bowler1);
         overs_bowler2 = view.findViewById(R.id.overs_bowler2);
-        matchPlayerItems = new ArrayList<>();
+    }
 
+    private void setupTeamAdapters() {
         String[] type = getResources().getStringArray(R.array.team_match);
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, type);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), R.layout.drop_down_feed_item, type);
         team1.setAdapter(arrayAdapter);
         team2.setAdapter(arrayAdapter);
+    }
 
-        match_back.setOnClickListener(new View.OnClickListener() {
+    private void setupListeners() {
+        match_back.setOnClickListener(v -> {
+            match_back.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            dismiss();
+        });
+
+        team1.setOnItemClickListener((parent, view, position, id) -> handleTeamSelection(team1, batter1, bowler1, players, players2, players3, players4, true));
+        team2.setOnItemClickListener((parent, view, position, id) -> handleTeamSelection(team2, batter2, bowler2, players, players2, players3, players4, false));
+
+        add_match_btn.setOnClickListener(v -> uploadMatch());
+    }
+
+    private void handleTeamSelection(MaterialAutoCompleteTextView teamView, MaterialAutoCompleteTextView batterView,
+                                    MaterialAutoCompleteTextView bowlerView, ArrayList<String> p1, ArrayList<String> p2,
+                                    ArrayList<String> p3, ArrayList<String> p4, boolean isTeam1) {
+        String selectedTeam = teamView.getText().toString();
+        String teamA = "NSC";
+        String teamB = "SBR";
+        if (selectedTeam.equals(teamA)) {
+            fetchPlayers(teamA, p1, batterView, isTeam1);
+            fetchPlayers(teamB, p2, bowlerView, isTeam1);
+        } else {
+            fetchPlayers(teamB, p3, batterView, isTeam1);
+            fetchPlayers(teamA, p4, bowlerView, isTeam1);
+        }
+    }
+
+    private void fetchPlayers(String team, ArrayList<String> playerList, MaterialAutoCompleteTextView playerView, boolean addToMatchPlayerItems) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Teams").child(team).child("players");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                match_back.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                playerList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String parent = String.valueOf(dataSnapshot.child("parent").getValue());
+                    FirebaseDatabase.getInstance().getReference("Profile").child(parent)
+                            .addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot profileSnapshot) {
+                                    String first = String.valueOf(profileSnapshot.child("first").getValue());
+                                    String last = String.valueOf(profileSnapshot.child("last").getValue());
+                                    String image = String.valueOf(profileSnapshot.child("image").getValue());
+                                    String parentId = String.valueOf(profileSnapshot.child("parent").getValue());
+                                    String name = first + " " + last;
+                                    playerList.add(name);
+                                    if (addToMatchPlayerItems) {
+                                        matchPlayerItems.add(new MatchPlayerList(first, last, image, parentId));
+                                    }
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.drop_down_feed_item, playerList);
+                                    playerView.setAdapter(adapter);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) { }
+                            });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+    }
+
+    private void uploadMatch() {
+        if (isInputValid()) {
+            String parent = "-" + new Date().getTime();
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Match").child(parent);
+            HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put("details", match_details.getText().toString());
+            hashMap.put("result", match_result.getText().toString());
+            hashMap.put("scorecard", "none");
+            hashMap.put("team1_name", team1.getText().toString());
+            hashMap.put("team2_name", team2.getText().toString());
+            hashMap.put("parent", parent);
+            hashMap.put("team1_score", score_team1.getText().toString() + " (" + overs_team1.getText().toString() + ")");
+            hashMap.put("team2_score", score_team2.getText().toString() + " (" + overs_team2.getText().toString() + ")");
+
+            putPlayerStats(hashMap, batter1, "top_team1_name", "top_team1_image", "top_team1_score", score_batter1, balls_batter1, out_batter1.isChecked());
+            putPlayerStats(hashMap, bowler1, "top2_team1_name", "top2_team1_image", "top2_team1_score", wickets_bowler1, runs_bowler1, overs_bowler1);
+            putPlayerStats(hashMap, batter2, "top_team2_name", "top_team2_image", "top_team2_score", score_batter2, balls_batter2, out_batter2.isChecked());
+            putPlayerStats(hashMap, bowler2, "top2_team2_name", "top2_team2_image", "top2_team2_score", wickets_bowler2, runs_bowler2, overs_bowler2);
+
+            reference.setValue(hashMap).addOnCompleteListener(task -> {
+                Toast.makeText(getContext(), "Uploaded successfully", Toast.LENGTH_SHORT).show();
                 dismiss();
-            }
-        });
+            });
+        } else {
+            Toast.makeText(getContext(), "Enter details", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        team1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (team1.getText().toString().equals("NSC")){
-                    reference = FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("players");
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            players.clear();
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                String parent = dataSnapshot.child("parent").getValue().toString();
+    private boolean isInputValid() {
+        return !score_team1.getText().toString().isEmpty() &&
+                !score_team2.getText().toString().isEmpty() &&
+                !overs_team1.getText().toString().isEmpty() &&
+                !overs_team2.getText().toString().isEmpty() &&
+                !score_batter1.getText().toString().isEmpty() &&
+                !score_batter2.getText().toString().isEmpty() &&
+                !balls_batter1.getText().toString().isEmpty() &&
+                !balls_batter2.getText().toString().isEmpty() &&
+                !wickets_bowler1.getText().toString().isEmpty() &&
+                !wickets_bowler2.getText().toString().isEmpty() &&
+                !runs_bowler1.getText().toString().isEmpty() &&
+                !runs_bowler2.getText().toString().isEmpty() &&
+                !overs_bowler1.getText().toString().isEmpty() &&
+                !overs_bowler2.getText().toString().isEmpty() &&
+                !match_details.getText().toString().isEmpty() &&
+                !match_result.getText().toString().isEmpty();
+    }
 
-                                FirebaseDatabase.getInstance().getReference("Profile").child(parent).addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        matchPlayerList = new MatchPlayerList(snapshot.child("first").getValue().toString(), snapshot.child("last").getValue().toString(), snapshot.child("image").getValue().toString(), snapshot.child("parent").getValue().toString());
-                                        matchPlayerItems.add(matchPlayerList);
-                                        String name = snapshot.child("first").getValue().toString() + " " + snapshot.child("last").getValue().toString();
-                                        players.add(name);
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                            }
-                            ArrayAdapter arrayAdapter4 = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players);
-                            batter1.setAdapter(arrayAdapter4);
-                            FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("players").addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    players2.clear();
-                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                        String parent = dataSnapshot.child("parent").getValue().toString();
-
-                                        FirebaseDatabase.getInstance().getReference("Profile").child(parent).addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                matchPlayerList = new MatchPlayerList(snapshot.child("first").getValue().toString(), snapshot.child("last").getValue().toString(), snapshot.child("image").getValue().toString(), snapshot.child("parent").getValue().toString());
-                                                matchPlayerItems.add(matchPlayerList);
-                                                String name = snapshot.child("first").getValue().toString() + " " + snapshot.child("last").getValue().toString();
-                                                players2.add(name);
-                                            }
-
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-
-                                            }
-                                        });
-                                    }
-                                    ArrayAdapter arrayAdapter1 = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players2);
-                                    bowler1.setAdapter(arrayAdapter1);
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+    private void putPlayerStats(HashMap<String, String> hashMap, MaterialAutoCompleteTextView playerView,
+                               String nameKey, String imageKey, String scoreKey,
+                               TextInputEditText stat1, TextInputEditText stat2, boolean isBatter) {
+        for (MatchPlayerList player : matchPlayerItems) {
+            String fullName = player.getFirst() + " " + player.getLast();
+            if (fullName.equals(playerView.getText().toString())) {
+                hashMap.put(nameKey, fullName);
+                hashMap.put(imageKey, player.getParent());
+                if (isBatter) {
+                    hashMap.put(scoreKey, stat1.getText().toString() + "* (" + stat2.getText().toString() + ")");
                 } else {
-                    reference = FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("players");
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            players3.clear();
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                String parent = dataSnapshot.child("parent").getValue().toString();
-
-                                FirebaseDatabase.getInstance().getReference("Profile").child(parent).addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        String name = snapshot.child("first").getValue().toString() + " " + snapshot.child("last").getValue().toString();
-                                        players3.add(name);
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                            }
-                            ArrayAdapter arrayAdapter3 = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players3);
-                            batter1.setAdapter(arrayAdapter3);
-                            FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("players").addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    players4.clear();
-                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                        String parent = dataSnapshot.child("parent").getValue().toString();
-
-                                        FirebaseDatabase.getInstance().getReference("Profile").child(parent).addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                String name = snapshot.child("first").getValue().toString() + " " + snapshot.child("last").getValue().toString();
-                                                players4.add(name);
-                                            }
-
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-
-                                            }
-                                        });
-                                    }
-                                    ArrayAdapter arrayAdapter1 = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players4);
-                                    bowler1.setAdapter(arrayAdapter1);
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    hashMap.put(scoreKey, stat1.getText().toString() + " (" + stat2.getText().toString() + ")");
                 }
+                break;
             }
-        });
+        }
+    }
 
-        team2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (team2.getText().toString().equals("NSC")){
-                    reference = FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("players");
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            players.clear();
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                String parent = dataSnapshot.child("parent").getValue().toString();
-
-                                FirebaseDatabase.getInstance().getReference("Profile").child(parent).addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        String name = snapshot.child("first").getValue().toString() + " " + snapshot.child("last").getValue().toString();
-                                        players.add(name);
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                            }
-                            ArrayAdapter arrayAdapter1 = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players);
-                            batter2.setAdapter(arrayAdapter1);
-                            FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("players").addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    players2.clear();
-                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                        String parent = dataSnapshot.child("parent").getValue().toString();
-
-                                        FirebaseDatabase.getInstance().getReference("Profile").child(parent).addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                String name = snapshot.child("first").getValue().toString() + " " + snapshot.child("last").getValue().toString();
-                                                players2.add(name);
-                                            }
-
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-
-                                            }
-                                        });
-                                    }
-                                    ArrayAdapter arrayAdapter1 = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players2);
-                                    bowler2.setAdapter(arrayAdapter1);
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                } else {
-                    reference = FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("players");
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            players3.clear();
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                String parent = dataSnapshot.child("parent").getValue().toString();
-
-                                FirebaseDatabase.getInstance().getReference("Profile").child(parent).addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                        String name = snapshot.child("first").getValue().toString() + " " + snapshot.child("last").getValue().toString();
-                                        players3.add(name);
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                            }
-                            ArrayAdapter arrayAdapter2 = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players3);
-                            batter2.setAdapter(arrayAdapter2);
-                            FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("players").addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    players4.clear();
-                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                        String parent = dataSnapshot.child("parent").getValue().toString();
-
-                                        FirebaseDatabase.getInstance().getReference("Profile").child(parent).addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                String name = snapshot.child("first").getValue().toString() + " " + snapshot.child("last").getValue().toString();
-                                                players4.add(name);
-                                            }
-
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-
-                                            }
-                                        });
-                                    }
-                                    ArrayAdapter arrayAdapter1 = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players4);
-                                    bowler2.setAdapter(arrayAdapter1);
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
+    private void putPlayerStats(HashMap<String, String> hashMap, MaterialAutoCompleteTextView playerView,
+                               String nameKey, String imageKey, String scoreKey,
+                               TextInputEditText wickets, TextInputEditText runs, TextInputEditText overs) {
+        for (MatchPlayerList player : matchPlayerItems) {
+            String fullName = player.getFirst() + " " + player.getLast();
+            if (fullName.equals(playerView.getText().toString())) {
+                hashMap.put(nameKey, fullName);
+                hashMap.put(imageKey, player.getParent());
+                hashMap.put(scoreKey, wickets.getText().toString() + "-" + runs.getText().toString() + " (" + overs.getText().toString() + ")");
+                break;
             }
-        });
-
-        add_match_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!score_team1.getText().toString().equals("") && !score_team2.getText().toString().equals("") && !overs_team1.getText().toString().equals("") && !overs_team2.getText().toString().equals("") && !score_batter1.getText().toString().equals("") && !score_batter2.getText().toString().equals("") &&
-                        !balls_batter1.getText().toString().equals("") && !balls_batter2.getText().toString().equals("") && !wickets_bowler1.getText().toString().equals("") && !wickets_bowler2.getText().toString().equals("") &&
-                        !runs_bowler1.getText().toString().equals("") && !runs_bowler2.getText().toString().equals("") && !overs_bowler1.getText().toString().equals("") &&
-                        !overs_bowler2.getText().toString().equals("") && !match_details.getText().toString().equals("") && !match_result.getText().toString().equals("")){
-
-                    final String parent = -new Date().getTime() + "";
-                    reference = FirebaseDatabase.getInstance().getReference("Match").child(parent);
-                        final HashMap<String, String> hashMap = new HashMap<>();
-                        hashMap.put("details", match_details.getText().toString());
-                        hashMap.put("result", match_result.getText().toString());
-                        hashMap.put("scorecard", "none");
-                        hashMap.put("team1_name", team1.getText().toString());
-                        hashMap.put("team2_name", team2.getText().toString());
-                        hashMap.put("parent", parent);
-                        hashMap.put("team1_score", score_team1.getText().toString() + " (" + overs_team1.getText().toString() + ")");
-                        hashMap.put("team2_score", score_team2.getText().toString() + " (" + overs_team2.getText().toString() + ")");
-
-                        for(int i = 0; i < matchPlayerItems.size(); i++){
-                            if (matchPlayerItems.get(i).getFirst().equals(batter1.getText().toString())){
-                                batter1_str = matchPlayerItems.get(i).getFirst() + " " + matchPlayerItems.get(i).getLast();
-                                batter1_score_final_str = score_batter1.getText().toString() + "* (" + balls_batter1.getText().toString() + ")";
-                                batter1_parent_str = matchPlayerItems.get(i).getParent();
-                            }
-                        }
-                        hashMap.put("top_team1_name", batter1_str);
-                        hashMap.put("top_team1_image", batter1_parent_str);
-                        hashMap.put("top_team1_score", batter1_score_final_str);
-
-
-                        for(int i = 0; i < matchPlayerItems.size(); i++){
-                            if (matchPlayerItems.get(i).getFirst().equals(bowler1.getText().toString())){
-                                bowler1_str = matchPlayerItems.get(i).getFirst() + " " + matchPlayerItems.get(i).getLast();
-                                bowler1_score_final_str = wickets_bowler1.getText().toString() + "-" + runs_bowler1.getText().toString() + " (" + overs_bowler1.getText().toString() + ")";
-                                bowler1_parent_str = matchPlayerItems.get(i).getParent();
-                            }
-                        }
-
-                    hashMap.put("top2_team1_name", bowler1_str);
-                    hashMap.put("top2_team1_image", bowler1_parent_str);
-                    hashMap.put("top2_team1_score", bowler1_score_final_str);
-
-                    for(int i = 0; i < matchPlayerItems.size(); i++){
-                        if (matchPlayerItems.get(i).getFirst().equals(batter2.getText().toString())){
-                            batter2_str = matchPlayerItems.get(i).getFirst() + " " + matchPlayerItems.get(i).getLast();
-                            batter2_score_final_str = score_batter2.getText().toString() + "* (" + balls_batter2.getText().toString() + ")";
-                            batter2_parent_str = matchPlayerItems.get(i).getParent();
-                        }
-                    }
-
-                            hashMap.put("top_team2_name", batter2_str);
-                            hashMap.put("top_team2_image", batter2_parent_str);
-                            hashMap.put("top_team2_score", batter2_score_final_str);
-
-                        for(int i = 0; i < matchPlayerItems.size(); i++){
-                            if (matchPlayerItems.get(i).getFirst().equals(bowler2.getText().toString())){
-                                bowler2_str = matchPlayerItems.get(i).getFirst() + " " + matchPlayerItems.get(i).getLast();
-                                bowler2_score_final_str = wickets_bowler2.getText().toString() + "-" + runs_bowler2.getText().toString() + " (" + overs_bowler2.getText().toString() + ")";
-                                bowler2_parent_str = matchPlayerItems.get(i).getParent();
-                            }
-                        }
-
-                            hashMap.put("top2_team2_name", bowler2_str);
-                            hashMap.put("top2_team2_image", bowler2_parent_str);
-                            hashMap.put("top2_team2_score", bowler2_score_final_str);
-
-                        reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-
-                                Toast.makeText(getContext(), "Uploaded successfully", Toast.LENGTH_SHORT).show();
-                                dismiss();
-                            }
-                        });
-                } else Toast.makeText(getContext(), "Enter details", Toast.LENGTH_SHORT).show();
-            }
-        });
+        }
     }
 }

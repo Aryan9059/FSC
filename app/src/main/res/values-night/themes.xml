@@ -214,7 +214,7 @@
         <item name="android:windowContentTransitions">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">#201b18</item>
-        <item name="screen_background">#201b18</item>
+        <item name="screen_background">#1A1111</item>
         <item name="ui_background">#3b2d2c</item>
         <item name="bar_background">#534441</item>
         <item name="bar_ui">#ffdad4</item>

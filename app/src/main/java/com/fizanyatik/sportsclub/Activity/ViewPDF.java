@@ -9,14 +9,14 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.TypedValue;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.fizanyatik.sportsclub.R;
-import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
-import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 public class ViewPDF extends AppCompatActivity {
     SharedPreferences prefs;
@@ -94,8 +94,8 @@ public class ViewPDF extends AppCompatActivity {
             }
         });
 
-        HtmlTextView bat_tv = findViewById(R.id.rules_html_tv);
-        bat_tv.setHtml("<p><span style=\"font-size: 16px;\"><strong>Clause 1.1: Front of Stumps (FOS)</strong></span></p>\n" +
+        TextView bat_tv = findViewById(R.id.rules_html_tv);
+        bat_tv.setText(Html.fromHtml("<p><span style=\"font-size: 16px;\"><strong>Clause 1.1: Front of Stumps (FOS)</strong></span></p>\n" +
                 "<p>In the absence of Ball Tracking technology and the Decision Review System (DRS) in cricket, an alternative method known as Front of Stumps (FOS) has been introduced. The salient points of this alternative are as follows:</p>\n" +
                 "<ul>\n" +
                 "    <li>If a batter gets beaten or deliberately blocks the ball using their body in front of the specified stumps on three occasions within a single over, the batter shall be deemed out.</li>\n" +
@@ -122,10 +122,10 @@ public class ViewPDF extends AppCompatActivity {
                 "    <li>To effect a Run-out on the Non-Striker, the fielding team must strike the area surrounding the steep line, whereas to effect a Run-out on the Striker, they must target the designated stumps.</li>\n" +
                 "    <li>Should the ball venture into the gutter, it is the responsibility of the batter who played the shot to retrieve the ball from the gutter and meticulously cleanse it.</li>\n" +
                 "</ul>\n" +
-                "<p>It is crucial for all participants to uphold these additional regulations to foster a harmonious and fair playing environment. While some of these rules may appear implicit, they have been explicitly stated here to prevent any disputes and ensure consistent adherence.</p>", new HtmlHttpImageGetter(bat_tv));
+                "<p>It is crucial for all participants to uphold these additional regulations to foster a harmonious and fair playing environment. While some of these rules may appear implicit, they have been explicitly stated here to prevent any disputes and ensure consistent adherence.</p>"));
 
-        HtmlTextView bowl_tv = findViewById(R.id.bowl_rules);
-        bowl_tv.setHtml("<p>This sub-category encompasses the specific rules pertaining to the bowling unit. It is essential to take note of the following regulations:</p>\n" +
+        TextView bowl_tv = findViewById(R.id.bowl_rules);
+        bowl_tv.setText(Html.fromHtml("<p>This sub-category encompasses the specific rules pertaining to the bowling unit. It is essential to take note of the following regulations:</p>\n" +
                 "<ul>\n" +
                 "    <li>Our stumps encompass each and every component of the red plastic chair positioned behind the batter, and they should be treated as the designated target.</li>\n" +
                 "    <li>It is strongly advised against commencing the bowling run-up from the boundary; an alternative starting point is recommended.</li>\n" +
@@ -136,10 +136,10 @@ public class ViewPDF extends AppCompatActivity {
                 "    <li>If the ball strikes a building, subsequently rebounds, and a player claims a catch, the batter shall be deemed NOT OUT. However, no runs will be awarded in such instances.</li>\n" +
                 "    <li>The concepts of wides and no-balls are applicable within this category, carrying a penalty of +1 run.</li>\n" +
                 "</ul>\n" +
-                "<p>It is imperative to adhere to these rules specific to the bowling unit in order to maintain a fair and safe playing environment. The regulations mentioned above serve to ensure consistency and promote a smooth gameplay experience for all participants.</p>", new HtmlHttpImageGetter(bowl_tv));
+                "<p>It is imperative to adhere to these rules specific to the bowling unit in order to maintain a fair and safe playing environment. The regulations mentioned above serve to ensure consistency and promote a smooth gameplay experience for all participants.</p>"));
 
-        HtmlTextView field_tv = findViewById(R.id.field_rules);
-        field_tv.setHtml("<p>This sub-category provides specific details regarding the runs allotted in various circumstances. The following information outlines the corresponding run values:</p>\n" +
+        TextView field_tv = findViewById(R.id.field_rules);
+        field_tv.setText(Html.fromHtml("<p>This sub-category provides specific details regarding the runs allotted in various circumstances. The following information outlines the corresponding run values:</p>\n" +
                 "<ol>\n" +
                 "    <li>Back of Keeper: 1 run.</li>\n" +
                 "    <li>Till Underground margin: 2 runs.</li>\n" +
@@ -159,14 +159,14 @@ public class ViewPDF extends AppCompatActivity {
                 "    <li>Back wall: 4 runs (on bounce), 6 runs (direct).</li>\n" +
                 "      </ul></li>\n" +
                 "</ol>\n" +
-                "<p>These run allocations are intended to reflect the specific locations or objects present within the playing area. Adhering to these guidelines will help determine the appropriate number of runs based on where the ball reaches or strikes during gameplay.</p>", new HtmlHttpImageGetter(bowl_tv));
+                "<p>These run allocations are intended to reflect the specific locations or objects present within the playing area. Adhering to these guidelines will help determine the appropriate number of runs based on where the ball reaches or strikes during gameplay.</p>"));
 
-        HtmlTextView social_tv = findViewById(R.id.social_rules);
-        social_tv.setHtml("<p>To ensure smooth and timely progress of ongoing matches, it is advised to refrain from engaging in leisurely conversations that may cause unnecessary delays. Instead, players are encouraged to converse during breaks, while playing, or at the conclusion of the match.</p>\n" +
+        TextView social_tv = findViewById(R.id.social_rules);
+        social_tv.setText(Html.fromHtml("<p>To ensure smooth and timely progress of ongoing matches, it is advised to refrain from engaging in leisurely conversations that may cause unnecessary delays. Instead, players are encouraged to converse during breaks, while playing, or at the conclusion of the match.</p>\n" +
                 "<p>During the course of gameplay, it is strictly prohibited to use abusive language or employ informal words. Players are expected to maintain a respectful and sportsmanlike demeanor throughout the match.</p>\n" +
                 "<p>In terms of interaction among players, it is permissible to cheer and support teammates using their respective nicknames. Additionally, players have the right to appeal for catches behind the wicket and for Front of Stumps (FOS) decisions.</p>\n" +
                 "<p>It is important to understand that there exist numerous rules and responsibilities that depend on individual behavior and common sense. Playing the game with full commitment and giving one&apos;s best effort, while also adhering to proper social and moral conduct, is of utmost importance.</p>\n" +
-                "<p>By following these guidelines, players can contribute to a positive and enjoyable cricketing experience for everyone involved.</p>", new HtmlHttpImageGetter(bowl_tv));
+                "<p>By following these guidelines, players can contribute to a positive and enjoyable cricketing experience for everyone involved.</p>"));
 
     }
 }

@@ -3,6 +3,7 @@ package com.fizanyatik.sportsclub.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,9 +24,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
-import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 import java.util.List;
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder>{
@@ -49,7 +47,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final FeedList listItem = listViews.get(position);
         holder.title.setText(listItem.getTitle());
-        holder.body.setHtml(listItem.getText(), new HtmlHttpImageGetter(holder.body));
+        holder.body.setText(Html.fromHtml(listItem.getText()));
         holder.date.setText(listItem.getDate());
         holder.type_tv.setText(listItem.getType());
 
@@ -124,7 +122,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder>{
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, date, type_tv;
-        HtmlTextView body;
+        TextView body;
         ImageView image, type_image;
         MaterialCardView feedLayout;
 

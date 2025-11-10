@@ -1,7 +1,9 @@
 package com.fizanyatik.sportsclub.Dialog;
 
 import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-import com.fizanyatik.sportsclub.BuildConfig;
 import com.fizanyatik.sportsclub.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,7 +43,7 @@ public class UpdateSupporter extends DialogFragment {
     Button add_player_upload;
     String former_team, former_player;
     String image_str, team_str, player_str, selected_parent, type;
-    FirebaseAuth mauth;
+    FirebaseAuth auth;
     ArrayList<String> players, players_parent;
     MaterialAutoCompleteTextView team, player;
     DatabaseReference reference, reference1;
@@ -72,7 +73,7 @@ public class UpdateSupporter extends DialogFragment {
         former_team = getArguments().getString("team");
         former_player = getArguments().getString("player");
 
-        mauth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
         players = new ArrayList<>();
         players_parent = new ArrayList<>();
         selected_parent = "none";
@@ -80,7 +81,7 @@ public class UpdateSupporter extends DialogFragment {
         birthdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MaterialDatePicker dialogs = MaterialDatePicker.Builder.datePicker().setTitleText("Select Birthdate").build();
+                MaterialDatePicker dialogs = MaterialDatePicker.Builder.datePicker().setTitleText("Select birthdate").build();
                 dialogs.show(getActivity().getSupportFragmentManager(), "tag");
                 dialogs.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
                     @Override
@@ -94,7 +95,7 @@ public class UpdateSupporter extends DialogFragment {
             }
         });
 
-        reference = FirebaseDatabase.getInstance().getReference("Profile").child(mauth.getCurrentUser().getUid());
+        reference = FirebaseDatabase.getInstance().getReference("Profile").child(auth.getCurrentUser().getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -114,7 +115,7 @@ public class UpdateSupporter extends DialogFragment {
                     ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, selected_team);
                     team.setAdapter(arrayAdapter);
                 } catch (Exception e){
-                    //Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Log.e("UpdateSupporter", "Error setting team adapter: " + e.getMessage());
                 }
 
                 player_str = snapshot.child("player").getValue().toString();
@@ -133,10 +134,10 @@ public class UpdateSupporter extends DialogFragment {
                                 players_parent.clear();
                                 players.clear();
                                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                    String typer = dataSnapshot.child("type").getValue().toString();
+                                    String type = dataSnapshot.child("type").getValue().toString();
                                     String parent = dataSnapshot.child("parent").getValue().toString();
                                     String name = dataSnapshot.child("first").getValue().toString() + " " + dataSnapshot.child("last").getValue().toString();
-                                    if (typer.equals("player")){
+                                    if (type.equals("player")){
                                         players.add(name);
                                         players_parent.add(parent);
                                     }
@@ -153,7 +154,7 @@ public class UpdateSupporter extends DialogFragment {
                                     ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, players);
                                     player.setAdapter(arrayAdapter);
                                 } catch (Exception e){
-                                    //Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                                    Log.e("UpdateSupporter", "Error setting player adapter: " + e.getMessage());
                                 }
                             }
 
@@ -189,7 +190,7 @@ public class UpdateSupporter extends DialogFragment {
             @Override
             public void onClick(View v) {
                 add_player_upload.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-                if(!first.getText().toString().equals("") && !last.getText().toString().equals("") && !team.getText().toString().equals("") && !selected_parent.equals("none") && !birthdate.getText().toString().equals("")){
+                if(!first.getText().toString().isEmpty() && !last.getText().toString().isEmpty() && !team.getText().toString().isEmpty() && !selected_parent.equals("none") && !birthdate.getText().toString().isEmpty()){
                     MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(getContext());
                     dialogBuilder.setView(R.layout.progress_dialog)
                             .setCancelable(false).create();
@@ -198,17 +199,26 @@ public class UpdateSupporter extends DialogFragment {
                     materialDialogs.show();
 
                     add_player_upload.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(mauth.getCurrentUser().getUid());
+                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(auth.getCurrentUser().getUid());
+                    String versionName;
+                    try{
+                        versionName = getContext().getPackageManager()
+                                .getPackageInfo(getContext().getPackageName(), 0).versionName;
+                    } catch (PackageManager.NameNotFoundException e) {
+                        versionName = "2.0_Chokito";
+                    }
+
+                    String finalVersionName = versionName;
 
                     final HashMap<String, String> hashMap = new HashMap<>();
                     hashMap.put("first", first.getText().toString());
                     hashMap.put("last", last.getText().toString());
                     hashMap.put("birthdate", birthdate.getText().toString());
                     hashMap.put("image", image_str);
-                    hashMap.put("parent", mauth.getCurrentUser().getUid());
+                    hashMap.put("parent", auth.getCurrentUser().getUid());
                     hashMap.put("team", team.getText().toString());
-                    hashMap.put("version", BuildConfig.VERSION_NAME);
-                    hashMap.put("email", mauth.getCurrentUser().getEmail());
+                    hashMap.put("version", finalVersionName);
+                    hashMap.put("email", auth.getCurrentUser().getEmail());
                     hashMap.put("player", selected_parent);
                     hashMap.put("type", type);
 
@@ -218,20 +228,20 @@ public class UpdateSupporter extends DialogFragment {
                             if (task.isSuccessful()){
                                 if (!team.getText().toString().equals(former_team)){
                                     if(former_team.equals("Superchargers")){
-                                        FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("support").child(mauth.getCurrentUser().getUid()).removeValue();
+                                        FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("support").child(auth.getCurrentUser().getUid()).removeValue();
 
-                                        reference = FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("support").child(mauth.getCurrentUser().getUid());
+                                        reference = FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("support").child(auth.getCurrentUser().getUid());
                                         final HashMap<String, String> hashMap2 = new HashMap<>();
-                                        hashMap2.put("parent", mauth.getCurrentUser().getUid());
+                                        hashMap2.put("parent", auth.getCurrentUser().getUid());
                                         reference.setValue(hashMap2).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (!selected_parent.equals(former_player)){
-                                                    FirebaseDatabase.getInstance().getReference("Profile").child(former_player).child("support").child(mauth.getCurrentUser().getUid()).removeValue();
+                                                    FirebaseDatabase.getInstance().getReference("Profile").child(former_player).child("support").child(auth.getCurrentUser().getUid()).removeValue();
 
-                                                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(selected_parent).child("support").child(mauth.getCurrentUser().getUid());
+                                                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(selected_parent).child("support").child(auth.getCurrentUser().getUid());
                                                     final HashMap<String, String> hashMap3 = new HashMap<>();
-                                                    hashMap3.put("parent", mauth.getCurrentUser().getUid());
+                                                    hashMap3.put("parent", auth.getCurrentUser().getUid());
                                                     reference.setValue(hashMap3).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
@@ -241,20 +251,20 @@ public class UpdateSupporter extends DialogFragment {
                                             }
                                         });
                                     } else {
-                                        FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("support").child(mauth.getCurrentUser().getUid()).removeValue();
+                                        FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("support").child(auth.getCurrentUser().getUid()).removeValue();
 
-                                        reference = FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("support").child(mauth.getCurrentUser().getUid());
+                                        reference = FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("support").child(auth.getCurrentUser().getUid());
                                         final HashMap<String, String> hashMap2 = new HashMap<>();
-                                        hashMap2.put("parent", mauth.getCurrentUser().getUid());
+                                        hashMap2.put("parent", auth.getCurrentUser().getUid());
                                         reference.setValue(hashMap2).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (!selected_parent.equals(former_player)){
-                                                    FirebaseDatabase.getInstance().getReference("Profile").child(former_player).child("support").child(mauth.getCurrentUser().getUid()).removeValue();
+                                                    FirebaseDatabase.getInstance().getReference("Profile").child(former_player).child("support").child(auth.getCurrentUser().getUid()).removeValue();
 
-                                                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(selected_parent).child("support").child(mauth.getCurrentUser().getUid());
+                                                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(selected_parent).child("support").child(auth.getCurrentUser().getUid());
                                                     final HashMap<String, String> hashMap3 = new HashMap<>();
-                                                    hashMap3.put("parent", mauth.getCurrentUser().getUid());
+                                                    hashMap3.put("parent", auth.getCurrentUser().getUid());
                                                     reference.setValue(hashMap3).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
@@ -265,11 +275,11 @@ public class UpdateSupporter extends DialogFragment {
                                         });
                                     }
                                 } else if (!selected_parent.equals(former_player)){
-                                    FirebaseDatabase.getInstance().getReference("Profile").child(former_player).child("support").child(mauth.getCurrentUser().getUid()).removeValue();
+                                    FirebaseDatabase.getInstance().getReference("Profile").child(former_player).child("support").child(auth.getCurrentUser().getUid()).removeValue();
 
-                                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(selected_parent).child("support").child(mauth.getCurrentUser().getUid());
+                                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(selected_parent).child("support").child(auth.getCurrentUser().getUid());
                                     final HashMap<String, String> hashMap3 = new HashMap<>();
-                                    hashMap3.put("parent", mauth.getCurrentUser().getUid());
+                                    hashMap3.put("parent", auth.getCurrentUser().getUid());
                                     reference.setValue(hashMap3).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {

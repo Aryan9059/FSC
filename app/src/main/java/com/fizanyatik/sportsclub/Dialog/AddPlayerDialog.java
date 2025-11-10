@@ -4,6 +4,7 @@ import static android.app.Activity.RESULT_OK;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
@@ -20,7 +21,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
-import com.fizanyatik.sportsclub.BuildConfig;
 import com.fizanyatik.sportsclub.Activity.HomeActivity;
 import com.fizanyatik.sportsclub.R;
 import com.google.android.gms.tasks.Continuation;
@@ -44,13 +44,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.TimeZone;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddPlayerDialog extends DialogFragment{
     TextInputEditText first, last, nickname, birthplace, birthdate, shirt, email, password;
     ImageView add_player_back, profile;
     Button add_player_upload;
-    FirebaseAuth mauth;
+    FirebaseAuth auth;
     CardView change_pic;
     StorageReference storageReference;
     MaterialAutoCompleteTextView team, batting, bowling, role_player;
@@ -91,7 +90,7 @@ public class AddPlayerDialog extends DialogFragment{
         password = view.findViewById(R.id.password);
         change_pic = view.findViewById(R.id.pic_change);
 
-        mauth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         String[] type = getResources().getStringArray(R.array.teams);
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.drop_down_feed_item, type);
@@ -138,9 +137,9 @@ public class AddPlayerDialog extends DialogFragment{
             @Override
             public void onClick(View v) {
                 add_player_upload.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-                if(!email.getText().toString().equals("") && !(password.getText().toString().length() < 8) && !first.getText().toString().equals("") && !last.getText().toString().equals("") && !nickname.getText().toString().equals("") &&
-                        !shirt.getText().toString().equals("") && !birthplace.getText().toString().equals("") &&
-                        !birthdate.getText().toString().equals("")){
+                if(!email.getText().toString().isEmpty() && !(password.getText().toString().length() < 8) && !first.getText().toString().isEmpty() && !last.getText().toString().isEmpty() && !nickname.getText().toString().isEmpty() &&
+                        !shirt.getText().toString().isEmpty() && !birthplace.getText().toString().isEmpty() &&
+                        !birthdate.getText().toString().isEmpty()){
 
                     CreateUserAccount();
 
@@ -181,12 +180,18 @@ public class AddPlayerDialog extends DialogFragment{
         AlertDialog materialDialogs = dialogBuilder.create();
         materialDialogs.show();
 
-        mauth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
-                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(mauth.getCurrentUser().getUid());
+                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(auth.getCurrentUser().getUid());
+                    String versionName;
+                    try{
+                        versionName = getContext().getPackageManager()
+                                .getPackageInfo(getContext().getPackageName(), 0).versionName;
+                    } catch (PackageManager.NameNotFoundException e) {
+                        versionName = "2.0_Chokito";
+                    }
 
                     final HashMap<String, String> hashMap = new HashMap<>();
                     hashMap.put("first", first.getText().toString());
@@ -198,7 +203,7 @@ public class AddPlayerDialog extends DialogFragment{
                     hashMap.put("nickname", nickname.getText().toString());
                     if (imageUri == null){hashMap.put("image", "default");} else {hashMap.put("image", mUri);}
                     hashMap.put("team", team.getText().toString());
-                    hashMap.put("parent", mauth.getCurrentUser().getUid());
+                    hashMap.put("parent", auth.getCurrentUser().getUid());
                     hashMap.put("role", role_player.getText().toString());
                     hashMap.put("batting", batting.getText().toString());
                     hashMap.put("bowling", bowling.getText().toString());
@@ -208,7 +213,7 @@ public class AddPlayerDialog extends DialogFragment{
                     hashMap.put("interests", "no");
                     hashMap.put("ratings", "no");
                     hashMap.put("captain", "no");
-                    hashMap.put("version", BuildConfig.VERSION_NAME);
+                    hashMap.put("version", versionName);
 
                     reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -216,13 +221,13 @@ public class AddPlayerDialog extends DialogFragment{
                             if (task.isSuccessful()){
 
                                 if (team.getText().toString().equals("Superchargers")){
-                                    reference = FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("players").child(mauth.getCurrentUser().getUid());
+                                    reference = FirebaseDatabase.getInstance().getReference("Teams").child("NSC").child("players").child(auth.getCurrentUser().getUid());
                                 } else {
-                                    reference = FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("players").child(mauth.getCurrentUser().getUid());
+                                    reference = FirebaseDatabase.getInstance().getReference("Teams").child("SBR").child("players").child(auth.getCurrentUser().getUid());
                                 }
 
                                 final HashMap<String, String> hashMap2 = new HashMap<>();
-                                hashMap2.put("parent", mauth.getCurrentUser().getUid());
+                                hashMap2.put("parent", auth.getCurrentUser().getUid());
                                 reference.setValue(hashMap2).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -235,7 +240,7 @@ public class AddPlayerDialog extends DialogFragment{
                                 });
 
                             } else {
-                                Toast.makeText(getContext(), "Sign in unsuccessful. " + task.getException() + "", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Sign in unsuccessful. " + task.getException(), Toast.LENGTH_LONG).show();
                                 materialDialogs.dismiss();
                             }
                         }

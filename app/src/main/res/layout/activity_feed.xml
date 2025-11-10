@@ -39,8 +39,9 @@
                     android:id="@+id/feed_back"
                     android:layout_width="24dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_gravity="center_vertical"
+                    android:contentDescription="Back"
                     android:src="@drawable/ic_arrow_back_24dp"
                     app:tint="?attr/main_text"
                     />
@@ -49,9 +50,10 @@
                     android:id="@+id/edit_feed"
                     android:layout_width="24dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="Edit"
                     android:visibility="gone"
-                    android:layout_gravity="center_vertical|right"
+                    android:layout_gravity="center_vertical|end"
                     android:src="@drawable/baseline_edit_24"
                     app:tint="?attr/main_text"
                     />
@@ -105,7 +107,6 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="4dp"
-                android:text="Title"
                 android:textColor="?attr/main_text"
                 android:textSize="18sp" />
 
@@ -114,11 +115,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:text="Date"
                 android:textColor="?attr/secondary_text"
                 android:textSize="14sp" />
 
-            <org.sufficientlysecure.htmltextview.HtmlTextView
+            <TextView
                 android:id="@+id/onefeedtext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,7 +126,6 @@
                 android:layout_marginTop="16dp"
                 android:autoLink="all"
                 android:layout_marginBottom="16dp"
-                android:text="Body"
                 android:textColor="?attr/main_text"
                 android:textSize="14sp" />
 

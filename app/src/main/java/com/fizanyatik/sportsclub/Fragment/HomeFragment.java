@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -193,7 +195,7 @@ public class HomeFragment extends Fragment {
                 try {
                     if (!image.equals("default")){Glide.with(getContext()).load(Uri.parse(image)).into(profile_picture);}
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e("error", e.getMessage());
                 }
             }
 

@@ -3,12 +3,12 @@ package com.fizanyatik.sportsclub.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.TypedValue;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -24,15 +24,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
-import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 public class FeedActivity extends AppCompatActivity {
     String image, body, date, title, type, parent, admin;
     ImageView imageView, back_btn, edit_btn;
     TextView title_tv, date_tv;
     DatabaseReference reference;
-    HtmlTextView body_tv;
+    TextView body_tv;
     MaterialToolbar toolbar_feed;
     SharedPreferences prefs;
 
@@ -147,7 +145,7 @@ public class FeedActivity extends AppCompatActivity {
         }
 
         title_tv.setText(title);
-        body_tv.setHtml(body, new HtmlHttpImageGetter(body_tv));
+        body_tv.setText(Html.fromHtml(body));
         date_tv.setText("Dated: " + date);
 
         if (!image.equals("no")) {

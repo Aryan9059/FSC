@@ -29,7 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import xyz.peridy.shimmerlayout.ShimmerLayout;
 
 public class MatchFragment extends Fragment {
     CardView rankings_cv;
@@ -37,7 +36,6 @@ public class MatchFragment extends Fragment {
     RecyclerView recyclerView;
     private List<MatchList> matchLists;
     DatabaseReference matchReference;
-    ShimmerLayout match_shimmer;
     RecyclerView.Adapter matchAdapter;
 
     @Override
@@ -48,7 +46,7 @@ public class MatchFragment extends Fragment {
         rankings_cv = root.findViewById(R.id.rankings_cv);
         search_match = root.findViewById(R.id.search_match);
 
-        List<MatchList> matchitems_1 = new ArrayList<>();
+        List<MatchList> matchItems = new ArrayList<>();
         rankings_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,8 +54,6 @@ public class MatchFragment extends Fragment {
                 startActivity(new Intent(getContext(), RankingsActivity.class));
             }
         });
-
-        match_shimmer = root.findViewById(R.id.match_shimmer);
 
         recyclerView = root.findViewById(R.id.match_rv);
 
@@ -108,7 +104,6 @@ public class MatchFragment extends Fragment {
                 recyclerView.setAdapter(matchAdapter);
                 matchAdapter.notifyDataSetChanged();
                 recyclerView.setVisibility(View.VISIBLE);
-                match_shimmer.setVisibility(View.GONE);
 
                 search_match.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -118,19 +113,19 @@ public class MatchFragment extends Fragment {
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        if (search_match.getText().toString().equals("")){
-                            matchitems_1.clear();
+                        if (search_match.getText().toString().isEmpty()){
+                            matchItems.clear();
                             matchAdapter = new MatchAdapter(getContext(), matchLists);
                             recyclerView.setAdapter(matchAdapter);
                             matchAdapter.notifyDataSetChanged();
                         } else {
-                            matchitems_1.clear();
+                            matchItems.clear();
                             int i = 0;
                             while(i < matchLists.size()){
                                 if(matchLists.get(i).getMatch_details().toLowerCase().contains(search_match.getText().toString().toLowerCase())) {
-                                    matchitems_1.add(matchLists.get(i));
+                                    matchItems.add(matchLists.get(i));
                                 }
-                                matchAdapter = new MatchAdapter(getContext(), matchitems_1);
+                                matchAdapter = new MatchAdapter(getContext(), matchItems);
                                 recyclerView.setAdapter(matchAdapter);
                                 matchAdapter.notifyDataSetChanged();
                                 i++;

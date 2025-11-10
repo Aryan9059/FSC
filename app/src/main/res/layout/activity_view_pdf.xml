@@ -121,7 +121,7 @@
                 android:textColor="?attr/main_text"
                 android:textSize="20sp" />
 
-            <org.sufficientlysecure.htmltextview.HtmlTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="all"
@@ -140,7 +140,7 @@
                 android:textColor="?attr/main_text"
                 android:textSize="20sp" />
 
-            <org.sufficientlysecure.htmltextview.HtmlTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="all"
@@ -159,7 +159,7 @@
                 android:textColor="?attr/main_text"
                 android:textSize="20sp" />
 
-            <org.sufficientlysecure.htmltextview.HtmlTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="all"
@@ -178,7 +178,7 @@
                 android:textColor="?attr/main_text"
                 android:textSize="20sp" />
 
-            <org.sufficientlysecure.htmltextview.HtmlTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="all"

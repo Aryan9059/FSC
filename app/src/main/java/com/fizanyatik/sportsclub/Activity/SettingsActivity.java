@@ -4,11 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -19,13 +19,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.fizanyatik.sportsclub.BuildConfig;
 import com.fizanyatik.sportsclub.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 public class SettingsActivity extends AppCompatActivity {
     ImageView settings_back;
     TextView version_tv;
@@ -69,9 +69,19 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        String versionName;
+        try{
+            versionName = getPackageManager()
+                    .getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            versionName = "2.0_Chokito";
+        }
+
+        String finalVersionName = versionName;
+
         version_cv = findViewById(R.id.version_cv);
         version_tv = findViewById(R.id.version_tv);
-        version_tv.setText("Currently using v" + BuildConfig.VERSION_NAME);
+        version_tv.setText("Currently using v" + finalVersionName);
 
         TypedValue typedValue = new TypedValue();
         TypedValue typedValue2 = new TypedValue();
@@ -132,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference("Update").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.child("version").getValue().toString().equals(BuildConfig.VERSION_NAME)){
+                        if (snapshot.child("version").getValue().toString().equals(finalVersionName)){
                             MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(SettingsActivity.this);
                             alertDialog.setTitle("Update");
                             alertDialog.setMessage("The FSC App is up to date.");
