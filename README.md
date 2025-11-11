@@ -89,3 +89,9 @@ This project is licensed under the MIT License - see the <a href="https://github
 - ShimmerLayout by <a href="https://github.com/rnpy/ShimmerLayout">Romain</a>
 - Android-AspectRatioLayout by <a href="https://github.com/TakWolf/Android-AspectRatioLayout">TakWolf</a>
 - flowlayoutmanager by <a href="https://github.com/xiaofeng-han/AndroidLibs/tree/master/flowlayoutmanager">xiaofeng-han</a>
+
+## Team Members
+
+- Aryan Srivastava (IIT2024501)
+- Paras Deepak Pandey (IIT2024235)
+- Soham Sunil Donode (IIT2024259)
