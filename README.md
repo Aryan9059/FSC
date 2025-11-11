@@ -49,6 +49,13 @@ The FSC App helps to manage statistics of players, rankings, matches and other i
 - Google Firebase
 - OneSignal Notifications
 
+## UML Diagrams
+
+| Use Case Diagram | Class Diagram |
+|------------------|---------------|
+| <img src="https://github.com/Aryan9059/FSC/blob/009735481195b949989043983252e6400687c2ea/assets/UseCaseDiagram.png" width="350"/> | <img src="https://github.com/Aryan9059/FSC/blob/009735481195b949989043983252e6400687c2ea/assets/ClassDiagram.png" width="500"/> |
+
+
 ## Getting Started
 
 To get started with the FSC App, simply download the app from the Releases page of the Repository or download the source code and build it yourself.
