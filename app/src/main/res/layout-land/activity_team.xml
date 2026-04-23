@@ -28,7 +28,6 @@
                     android:layout_height="44dp"
                     app:cardElevation="0dp"
                     app:cardCornerRadius="22dp"
-                    android:fitsSystemWindows="true"
                     app:arl_heightRatio="1"
                     app:arl_widthRatio="1">
 
@@ -75,6 +74,15 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/loading_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="wrap_content"

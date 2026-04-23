@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -123,6 +124,7 @@ public class PlayerActivity extends AppCompatActivity {
         stamina_rate_prg = findViewById(R.id.stamina_prg);
 
         support_rv = findViewById(R.id.supporter_rv);
+        support_rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         support_rv.setNestedScrollingEnabled(false);
 
         certificate_btn = findViewById(R.id.certificate_btn);

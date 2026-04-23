@@ -119,7 +119,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     scoring_btn.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-                    Intent intent = getPackageManager().getLaunchIntentForPackage("com.ganapathy.best.cricket.scorer");
+                    Intent intent = getPackageManager().getLaunchIntentForPackage("com.ganapathy.cricket.scorer");
                     startActivity(intent);
                 } catch (Exception e){
                     Toast.makeText(HomeActivity.this, "App isn't installed", Toast.LENGTH_LONG).show();
@@ -275,8 +275,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (pagerMain.getCurrentItem() == 1){
-                    DialogFragment dialog = new AddMatchDialog();
-                    dialog.show(getSupportFragmentManager(), "match");
+                    startActivity(new Intent(HomeActivity.this, MatchSetupActivity.class));
+//                    DialogFragment dialog = new AddMatchDialog();
+//                    dialog.show(getSupportFragmentManager(), "match");
                 } else if(pagerMain.getCurrentItem() == 2){
                     DialogFragment dialog = new AddFeedDialog();
                     Bundle bundle = new Bundle();

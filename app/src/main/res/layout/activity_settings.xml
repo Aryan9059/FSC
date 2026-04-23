@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginBottom="2dp"
-                        android:text="Fizanyatik Sports Club"
+                        android:text="Fantastic Sports Club"
                         android:textColor="?attr/screen_background"
                         android:textSize="18sp" />
 

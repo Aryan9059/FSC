@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Activity.ScoringActivity">
+
+    <TextView
+        android:id="@+id/team_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Batting Team: NSC"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/score_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/0"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/overs_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overs: 0.0 (10)"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/target_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Target: -"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/on_strike_batter_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="On Strike: Player A (0*)"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/off_strike_batter_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Off Strike: Player B (0)"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/bowler_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Bowler: Player C (0-0)"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:columnCount="4">
+
+        <Button android:id="@+id/btn_run_0" android:layout_columnWeight="1" android:text="0" />
+        <Button android:id="@+id/btn_run_1" android:layout_columnWeight="1" android:text="1" />
+        <Button android:id="@+id/btn_run_2" android:layout_columnWeight="1" android:text="2" />
+        <Button android:id="@+id/btn_run_3" android:layout_columnWeight="1" android:text="3" />
+        <Button android:id="@+id/btn_run_4" android:layout_columnWeight="1" android:text="4" />
+        <Button android:id="@+id/btn_run_6" android:layout_columnWeight="1" android:text="6" />
+        <Button android:id="@+id/btn_wide" android:layout_columnWeight="1" android:text="Wd" />
+        <Button android:id="@+id/btn_no_ball" android:layout_columnWeight="1" android:text="Nb" />
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btn_wicket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="WICKET"
+        app:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/btn_end_innings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="End Innings" />
+
+</LinearLayout>

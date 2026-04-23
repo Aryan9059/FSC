@@ -139,6 +139,12 @@
             android:name=".Activity.SettingsActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.ScoringActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.MatchSetupActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.HomeActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

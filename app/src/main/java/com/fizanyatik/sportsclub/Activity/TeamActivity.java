@@ -88,7 +88,7 @@ public class TeamActivity extends AppCompatActivity {
         Resources.Theme theme = getTheme();
         theme.resolveAttribute(R.attr.navigation, typedValue,true);
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             theme.resolveAttribute(R.attr.bar_background, typedValue,true);
             theme.resolveAttribute(R.attr.screen_background, typedValue2,true);
             getWindow().setStatusBarColor(typedValue.data);
@@ -105,6 +105,7 @@ public class TeamActivity extends AppCompatActivity {
         support_rv = findViewById(R.id.supporter_rv);
         support_count = findViewById(R.id.support_count);
         support_rv.setNestedScrollingEnabled(false);
+        support_rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             player_rv.setLayoutManager(new LinearLayoutManager(this));
