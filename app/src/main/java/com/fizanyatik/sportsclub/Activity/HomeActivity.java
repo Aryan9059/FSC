@@ -51,7 +51,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
-    ImageView settings_btn, scoring_btn;
+    ImageView settings_btn;
     BottomNavigationView btm;
     NavigationRailView railView;
     FloatingActionButton fab_btn;
@@ -106,26 +106,12 @@ public class HomeActivity extends AppCompatActivity {
         notification();
 
         settings_btn = findViewById(R.id.settings_btn);
-        scoring_btn = findViewById(R.id.scoring_btn);
         fab_btn = findViewById(R.id.fab_add);
         toolbar = findViewById(R.id.toolbar_home);
         pagerMain = findViewById(R.id.fragment_container_new);
         arr.add(new HomeFragment());
         arr.add(new MatchFragment());
         arr.add(new FeedFragment());
-
-        scoring_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    scoring_btn.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-                    Intent intent = getPackageManager().getLaunchIntentForPackage("com.ganapathy.cricket.scorer");
-                    startActivity(intent);
-                } catch (Exception e){
-                    Toast.makeText(HomeActivity.this, "App isn't installed", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
         if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE){
             btm = findViewById(R.id.bottom_nav);
@@ -203,7 +189,6 @@ public class HomeActivity extends AppCompatActivity {
                 switch (position){
 
                     case 0:
-                        scoring_btn.setVisibility(View.GONE);
                         if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE){
                             btm.getMenu().getItem(0).setChecked(true);
                             ctl.setTitle("Home");
@@ -216,7 +201,6 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case 1:
-                        scoring_btn.setVisibility(View.VISIBLE);
                         if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE){
                             btm.getMenu().getItem(1).setChecked(true);
                             ctl.setTitle("Matches");
@@ -242,7 +226,6 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case 2:
-                        scoring_btn.setVisibility(View.GONE);
                         if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE){
                             btm.getMenu().getItem(2).setChecked(true);
                             ctl.setTitle("Feeds");

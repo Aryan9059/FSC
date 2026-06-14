@@ -40,10 +40,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
+import com.fizanyatik.sportsclub.SupabaseStorageHelper;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,11 +53,9 @@ public class AddSupporterDialog extends DialogFragment {
     Button add_player_upload;
     FirebaseAuth auth;
     CardView change_pic;
-    StorageReference storageReference;
     MaterialAutoCompleteTextView team, player;
     private static final int IMAGE_REQUEST = 1;
     private Uri imageUri = null;
-    private StorageTask uploadTask;
     DatabaseReference reference;
     ArrayList<String> players, players_parent;
     String mUri, selected_parent;
@@ -282,64 +277,35 @@ public class AddSupporterDialog extends DialogFragment {
         });
     }
 
-    private void uploadImage(){
-
-        if (imageUri != null){
-            storageReference = FirebaseStorage.getInstance().getReference("Profile");
-            final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-                    +"."+getFileExtension(imageUri));
-
-            uploadTask = fileReference.putFile(imageUri);
-            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if (!task.isSuccessful()){
-                        throw  task.getException();
-                    }
-
-                    return  fileReference.getDownloadUrl();
-                }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()){
-                        Uri downloadUri = task.getResult();
-                        mUri = downloadUri.toString();
-                    }
-
-                    else {
-                        Toast.makeText(getContext(), "Failed!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-        else {
+    private void uploadImage() {
+        if (imageUri == null) {
             Toast.makeText(getContext(), "No image selected", Toast.LENGTH_SHORT).show();
+            return;
         }
+        Toast.makeText(getContext(), "Uploading photo...", Toast.LENGTH_SHORT).show();
+        SupabaseStorageHelper.uploadFile(requireContext(), "profile", imageUri, new SupabaseStorageHelper.UploadCallback() {
+            @Override
+            public void onSuccess(String publicUrl) {
+                mUri = publicUrl;
+            }
+            @Override
+            public void onFailure(String error) {
+                if (getContext() != null)
+                    requireActivity().runOnUiThread(() ->
+                        Toast.makeText(getContext(), "Upload failed: " + error, Toast.LENGTH_LONG).show()
+                    );
+            }
+        });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null){
+                && data != null && data.getData() != null) {
             imageUri = data.getData();
             profile.setImageURI(imageUri);
             uploadImage();
-
-            if (uploadTask != null && uploadTask.isInProgress()){
-                Toast.makeText(getContext(), "Upload in progress", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                uploadImage();
-            }
         }
     }
 }

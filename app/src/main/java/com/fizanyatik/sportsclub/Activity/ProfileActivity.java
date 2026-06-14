@@ -28,9 +28,7 @@ import com.fizanyatik.sportsclub.Dialog.PasswordDialog;
 import com.fizanyatik.sportsclub.Dialog.UpdatePlayerDialog;
 import com.fizanyatik.sportsclub.Dialog.UpdateSupporter;
 import com.fizanyatik.sportsclub.R;
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,10 +37,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
+import com.fizanyatik.sportsclub.SupabaseStorageHelper;
 import java.util.HashMap;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -51,10 +46,8 @@ public class ProfileActivity extends AppCompatActivity {
     String email, username;
     TextView email_tv, name_tv;
     ConstraintLayout password_cl, profile_cl, stats_cl, sign_out_cl, interests_cl, links_cl;
-    StorageReference storageReference;
     private static final int IMAGE_REQUEST = 1;
     private Uri imageUri;
-    private StorageTask uploadTask;
     DatabaseReference reference;
     SharedPreferences prefs;
 
@@ -122,7 +115,6 @@ public class ProfileActivity extends AppCompatActivity {
         interests_cl = findViewById(R.id.interests_cl);
         links_cl = findViewById(R.id.links_cl);
 
-        storageReference = FirebaseStorage.getInstance().getReference("Profile");
 
         password_cl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,75 +227,45 @@ public class ProfileActivity extends AppCompatActivity {
         startActivityForResult(intent, IMAGE_REQUEST);
     }
 
-    private String getFileExtension(Uri uri){
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+    private String getFileExtension(Uri uri) {
+        return android.webkit.MimeTypeMap.getSingleton()
+                .getExtensionFromMimeType(getContentResolver().getType(uri));
     }
 
-    private void uploadImage(){
-
-        if (imageUri != null){
-            final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-                    +"."+getFileExtension(imageUri));
-
-            uploadTask = fileReference.putFile(imageUri);
-            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if (!task.isSuccessful()){
-                        throw  task.getException();
-                    }
-
-                    return  fileReference.getDownloadUrl();
-                }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()){
-                        Uri downloadUri = task.getResult();
-                        String mUri = downloadUri.toString();
-
-                        email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                        username = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                        reference = FirebaseDatabase.getInstance().getReference("Profile").child(username);                        HashMap<String, Object> map = new HashMap<>();
-                        map.put("image", mUri);
-                        reference.updateChildren(map);
-                    }
-
-                    else {
-                        Toast.makeText(ProfileActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(ProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+    private void uploadImage() {
+        if (imageUri == null) {
+            Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show();
+            return;
         }
-        else {
-            Toast.makeText(ProfileActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(this, "Uploading...", Toast.LENGTH_SHORT).show();
+        SupabaseStorageHelper.uploadFile(this, "profile", imageUri, new SupabaseStorageHelper.UploadCallback() {
+            @Override
+            public void onSuccess(String publicUrl) {
+                runOnUiThread(() -> {
+                    username = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    reference = FirebaseDatabase.getInstance().getReference("Profile").child(username);
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("image", publicUrl);
+                    reference.updateChildren(map);
+                    Toast.makeText(ProfileActivity.this, "Photo updated!", Toast.LENGTH_SHORT).show();
+                });
+            }
+            @Override
+            public void onFailure(String error) {
+                runOnUiThread(() ->
+                    Toast.makeText(ProfileActivity.this, "Upload failed: " + error, Toast.LENGTH_LONG).show()
+                );
+            }
+        });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null){
+                && data != null && data.getData() != null) {
             imageUri = data.getData();
             uploadImage();
-
-            if (uploadTask != null && uploadTask.isInProgress()){
-                Toast.makeText(ProfileActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                uploadImage();
-            }
         }
     }
 
