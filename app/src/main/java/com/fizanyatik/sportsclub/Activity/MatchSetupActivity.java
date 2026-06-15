@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ public class MatchSetupActivity extends AppCompatActivity {
     TextInputEditText matchNameEdt, seriesNameEdt, totalOversEdt, totalWicketsEdt, wicketsPerBatterEdt;
     RecyclerView nscPlayersRv, sbrPlayersRv;
     Button startMatchBtn;
-    ProgressBar loadingProgress;
+    ImageView back_btn;
 
     DatabaseReference profileRef;
     PlayerSelectionAdapter nscAdapter, sbrAdapter;
@@ -70,16 +71,6 @@ public class MatchSetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_setup);
 
-        // Setup Toolbar back button
-        Toolbar toolbar = findViewById(R.id.match_setup_toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setTitle("New Match");
-            }
-            toolbar.setNavigationOnClickListener(v -> finish());
-        }
 
         // Find Views
         matchNameEdt = findViewById(R.id.match_name_edt);
@@ -90,7 +81,7 @@ public class MatchSetupActivity extends AppCompatActivity {
         nscPlayersRv = findViewById(R.id.nsc_players_rv);
         sbrPlayersRv = findViewById(R.id.sbr_players_rv);
         startMatchBtn = findViewById(R.id.start_match_btn);
-        loadingProgress = findViewById(R.id.loading_progress);
+        back_btn = findViewById(R.id.match_setup_back);
 
         // Setup Adapters
         nscAdapter = new PlayerSelectionAdapter(nscPlayerList, this);
@@ -105,13 +96,13 @@ public class MatchSetupActivity extends AppCompatActivity {
         loadPlayers();
 
         startMatchBtn.setOnClickListener(v -> validateAndStart());
+        back_btn.setOnClickListener(v -> finish());
     }
 
     // Counts how many profile fetches are still pending (for both teams combined)
     private int pendingFetches = 0;
 
     private void loadPlayers() {
-        if (loadingProgress != null) loadingProgress.setVisibility(View.VISIBLE);
         startMatchBtn.setEnabled(false);
         nscPlayerList.clear();
         sbrPlayerList.clear();
@@ -187,7 +178,6 @@ public class MatchSetupActivity extends AppCompatActivity {
         if (pendingFetches == 0) {
             nscAdapter.notifyDataSetChanged();
             sbrAdapter.notifyDataSetChanged();
-            if (loadingProgress != null) loadingProgress.setVisibility(View.GONE);
             startMatchBtn.setEnabled(true);
 
             if (nscPlayerList.isEmpty() && sbrPlayerList.isEmpty()) {

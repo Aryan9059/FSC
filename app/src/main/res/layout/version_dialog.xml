@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:text="Now its time for the letter C. This version (v2.0) has been named Chokito based on the chocolate bar manufactured by Nestle in New Zealand."
+        android:text="The long wait ends for the letter D, it has been no less than a dream for me to build this version. So it has been named after Cadbury Dream."
         android:textColor="?attr/secondary_text"
         android:textSize="14sp" />
 

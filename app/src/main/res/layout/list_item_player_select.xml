@@ -1,18 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/player_item_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:padding="8dp">
+    android:paddingVertical="10dp"
+    android:clickable="false"
+    android:focusable="false">
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/player_checkbox"
+    <!-- Player photo (circular) -->
+    <ImageView
+        android:id="@+id/player_avatar"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="@drawable/circle_player_avatar"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_pic"
+        android:clipToOutline="true"
+        android:contentDescription="Player photo" />
+
+    <!-- Name + stats column -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Player Name"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp">
+
+        <TextView
+            android:id="@+id/player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/main_text"
+            android:textSize="18sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/player_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/secondary_text"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+    <!-- Right: checkbox -->
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/player_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false" />
 
 </LinearLayout>
